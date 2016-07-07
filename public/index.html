@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  <!--css CDN-->
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- jquery CDN-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-  <script type="text/javascript" src="./js/javascript.js"></script>
 
-  <body>
+  <!--javascript file-->
+  <script type="text/javascript" src="./js/javascript.js"></script>
+  <!--G storage-->
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <!-- firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+  <!--app-->
+  <script src="app.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAn7zpk17ffO6tVIyamIqXAXkN-8k2d-As",
+      authDomain: "steve-tseng-portfolio.firebaseapp.com",
+      databaseURL: "https://steve-tseng-portfolio.firebaseio.com",
+      storageBucket: "steve-tseng-portfolio.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script>
+
+<body>
 
   <nav id="fixedbar">
     <ul id="fixednav">
@@ -17,28 +40,27 @@
     </ul>
   </nav>
 
-  	<div class="header">
-  		<div class="col-md-1"></div>
-  		<div id="1" class="col-md-1"></div>
-  		<div id="2" class="col-md-1"></div>
-  		<div id="3" class="col-md-1"></div>
-    	<div id="name" class="col-md-4">
-    		<h1 style="display:inline">Steve Tseng</h1>
-    	</div>
-  		<div id="4" class="col-md-1"></div>
-  		<div id="5" class="col-md-1"></div>
-  		<div id="6" class="col-md-1"></div>
-  		<div class="col-md-1"></div>
-		</div>
-
-		<hr class="styledline"></hr>
-    <div class="container">
-    	<div>
-    		<h3>Summary</h3>
-    		<p>Motivated and Fresh Web Developer with engineering background and engineering experience. Results and details oriented, with emphasis on efficiency and effectiveness. Strong technical skills and capable communicator. Entrepenurial in spirit and Dedicated to team and team effort.</p>
-    	</div>
-    	<div>
-    		<h3>Skills</h3>
+  <div class="header">
+  	<div class="col-md-1"></div>
+  	<div id="1" class="col-md-1"></div>
+  	<div id="2" class="col-md-1"></div>
+  	<div id="3" class="col-md-1"></div>
+  	<div id="name" class="col-md-4">
+  		<h1 style="display:inline">Steve Tseng</h1>
+  	</div>
+  	<div id="4" class="col-md-1"></div>
+  	<div id="5" class="col-md-1"></div>
+  	<div id="6" class="col-md-1"></div>
+  	<div class="col-md-1"></div>
+  </div>
+  <hr class="styledline"></hr>
+  <div class="container">
+    <div>
+    	<h3>Summary</h3>
+    	<p>Motivated and Fresh Web Developer with engineering background and engineering experience. Results and details oriented, with emphasis on efficiency and effectiveness. Strong technical skills and capable communicator. Entrepenurial in spirit and Dedicated to team and team effort.</p>
+    </div>
+    <div>
+    	<h3>Skills</h3>
     		<ul>
     			<div class="row">
   					<div class="col-md-6">
@@ -57,45 +79,71 @@
   						<li>MongoDB.js</li>
   						<li>PostgreSQL</li>
   					</div>
-				</div>
+				  </div>
     		</ul>
     	</div>
     	<div>
-    	<h3>Experience</h3>
-    	<div>
-    		<h4><strong>Snapwize, LLC</strong> - Web Developer</h4>
-    		<h6>November 2015 to February 2016</h6>
+        <h3>Experience</h3>
+        <div>
+    		  <h4><strong>Snapwize, LLC</strong> - Web Developer</h4>
+    		  <h6>November 2015 to February 2016</h6>
     			<ul>
     				<li>Developed wiring diagrams for customers</li>
     				<li>Design web layouts and UI</li>
     				<li>Setup Wordpress websites and plugins</li>
     				<li>Performed periodic maintenance and basic SEO</li>
     			</ul>
-    		<div>
+    		</div>
     	</div>
     	<div>
     		<h4><strong>Applied Medical</strong> - Medical Device Manufacturing Engineering</h4>
     		<h6>June 2013 to February 2015</h6>
     		<ul>
-    			<li>Filed 2 patent designs in the field of surgical simulation</li>
-				<li>Innovated solutions and process for difficult to assemble components</li>
-				<li>Designed fixtures and tools for cleanroom assembly line</li>
-				<li>Drafted and documented mechanical part drawings & assembly models into SAP system and SolidWorks PDM</li>
-				<li>Written and revised test protocols, test reports, and manufacturing instructions for processes</li>
-				<li>Interacted and worked with cross functional areas of the business</li>
-				<li>Conducted time studies and costs analysis for new and established processes</li>
-				<li>Accelerated the production speed of silicone components manufacturing process by 75%</li>
-				<li>Developed and implemented rework process for a product line</li>
-				<li>Conducted process verification and validation IQ, OQ, & PQ to qualify a machine for production line</li>
-				<li>Issued, investigated, and responded to Manufacturing Readiness Reviews (MRR)</li>
-			</ul>
+      		<li>Filed 2 patent designs in the field of surgical simulation</li>
+  				<li>Innovated solutions and process for difficult to assemble components</li>
+  				<li>Designed fixtures and tools for cleanroom assembly line</li>
+  				<li>Drafted and documented mechanical part drawings & assembly models into SAP system and SolidWorks PDM</li>
+  				<li>Written and revised test protocols, test reports, and manufacturing instructions for processes</li>
+  				<li>Interacted and worked with cross functional areas of the business</li>
+  				<li>Conducted time studies and costs analysis for new and established processes</li>
+  				<li>Accelerated the production speed of silicone components manufacturing process by 75%</li>
+  				<li>Developed and implemented rework process for a product line</li>
+  				<li>Conducted process verification and validation IQ, OQ, & PQ to qualify a machine for production line</li>
+  				<li>Issued, investigated, and responded to Manufacturing Readiness Reviews (MRR)</li>
+        </ul>
     	</div>
     	<h3>Education</h3>
     	<div>
     		<h4>California State Polytechnic University</h4>
     		<h5>Bachelor's Degree, Mechanical Engineering</h5>
     		<h6>Graduated 2013</h6>
-    	</div>
-	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="angular">
+  <div ng-app="myApp" class="app">
+    <!--
+    <div ng-controller="SampleCtrl">
+    <input type="text" ng-model="data.text"/>
+    <h1>You said: {{ data.text }}</h1>
+    </div> -->
+    <label>Employee Name</label>
+    <input type="text" id="employeeName" ng-model="employeeName"></br>
+    <label>Employee Age</label>
+    <input type="text" id="employeeAge" ng-model="employeeAge"></br>
+
+    <div>
+      <button class="btn btn-default" ng-click="saveEmployee()">
+        Save <span class="glyphicon glyphicon-ok"></span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
   </body>
 </html>

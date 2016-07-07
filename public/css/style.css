@@ -1,3 +1,5 @@
+
+
 .header {
 	color:black;
 	overflow: hidden;
@@ -47,3 +49,17 @@ ul#fixednav li {
 ul {
     list-style-type: none;
 }
+
+.angular {
+	background-color: #E62A39;
+	height:1000px;
+}
+
+.app {
+	width:500px;
+	height: 500px;
+    border-style: solid;
+    border-width: 2px;
+}
+
+
