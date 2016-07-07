@@ -1,33 +1,24 @@
 var app = angular
 	.module("myApp", [
-		"firebase"
+		"firebase", "ngRoute", "Steve.HomeController"
 	]);
 
-app.controller("SampleCtrl", function($scope){
-	$scope.materials = [{
-		id:'1',
-		name: 'Plastic',
-		description: 'STUFF and carbon fibers'
-	},
-	{
-		id:'2',
-		name: 'Aluminum',
-		description: 'STUFF and carbon fibers'
-	}];
-	
-	$scope.index = 1;
+app.config(configFunction);
+
+function configFunction($routeProvider, $locationProvider) {
+
+  $routeProvider
+    .when('/first', {
+      templateUrl: './partials/home.html',
+      controller: 'HomeController'
+    });
+}
 
 
-	$scope.next = function(){
-		// $(".table").css({
-  //       'transform': 'translateX(-500px)',
-  //       'opacity': '0',
-  //       'transition': 'all cubic-bezier(0.600, -0.280, 0.735, 0.045) .5s'
-  //     	})
-      	$scope.index++;
-	};
 
-});
+// app.controller("SampleCtrl", function($scope){
+
+// });
 
 
 
