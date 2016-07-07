@@ -1,0 +1,49 @@
+.header {
+	color:black;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.styledline {
+	border-top: 3px double #8c8b8b;
+}
+
+.container {
+
+}
+
+.col-md-6 {
+	padding:5px;
+}
+
+div {
+	padding:5px;
+}
+
+#name {
+	text-align: center;
+}
+
+#menu {
+	padding:10px;
+}
+
+.menu_items {
+	vertical-align: center;
+}
+
+/* hidden fixed navigation */
+#fixedbar { 
+  display: none;
+  position: fixed;
+  top: 85%;
+  left: 78%;
+}
+
+ul#fixednav li {
+	display:inline;
+}
+ 
+ul {
+    list-style-type: none;
+}
