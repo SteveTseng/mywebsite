@@ -8,7 +8,25 @@ app.controller("SampleCtrl", function($scope){
 		id:'1',
 		name: 'Plastic',
 		description: 'STUFF and carbon fibers'
-	}]
+	},
+	{
+		id:'2',
+		name: 'Aluminum',
+		description: 'STUFF and carbon fibers'
+	}];
+	
+	$scope.index = 1;
+
+
+	$scope.next = function(){
+		// $(".table").css({
+  //       'transform': 'translateX(-500px)',
+  //       'opacity': '0',
+  //       'transition': 'all cubic-bezier(0.600, -0.280, 0.735, 0.045) .5s'
+  //     	})
+      	$scope.index++;
+	};
+
 });
 
 

@@ -62,4 +62,7 @@ ul {
     border-width: 2px;
 }
 
-
+iframe {
+	width:600px;
+	height:600px;
+}
