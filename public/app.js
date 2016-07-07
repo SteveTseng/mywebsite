@@ -1,4 +1,17 @@
-var app = angular.module("myApp", ["firebase"]);
+var app = angular
+	.module("myApp", [
+		"firebase"
+	]);
+
+app.controller("SampleCtrl", function($scope){
+	$scope.materials = [{
+		id:'1',
+		name: 'Plastic',
+		description: 'STUFF and carbon fibers'
+	}]
+});
+
+
 
 // app.controller("SampleCtrl", function($scope, $firebaseObject) {
 //   var ref = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
@@ -11,14 +24,22 @@ var app = angular.module("myApp", ["firebase"]);
 //   syncObject.$bindTo($scope, "data");
 // });
 
-app.controller("SampleCtrl", function($scope){
-	$scope.employeeName = "";
-	$scope.employeeAge = 0;
-	$scope.myData = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
+// app.controller("SampleCtrl", function($scope){
+// 	$scope.employeeName = "";
+// 	$scope.employeeAge = 0;
+// 	$scope.employees = {};
+// 	$scope.myData = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
 	
-	$scope.saveEmployee = function(){
-		$scope.myData.push({employeeName:$scope.employeeName});
-		$scope.employeeName = "";
-		$scope.employeeAge = 0;
-	};
-});
+// 	$scope.saveEmployee = function(){
+// 		$scope.myData.push({
+// 			employeeName:$scope.employeeName, 
+// 			employeeAge:$scope.employeeAge
+// 		});
+// 		$scope.employeeName = "";
+// 		$scope.employeeAge = 0;
+// 	};
+
+// 	$scope.myData.on('value', function(snapshot){
+// 		$scope.employees = snapshot.val();
+// 	});
+// });

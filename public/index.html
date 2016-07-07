@@ -18,17 +18,18 @@
   <!-- AngularFire -->
   <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
   <!--app-->
+  <script type="text/javascript" src="./controllers/homeController.js"></script>
   <script src="app.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAn7zpk17ffO6tVIyamIqXAXkN-8k2d-As",
-      authDomain: "steve-tseng-portfolio.firebaseapp.com",
-      databaseURL: "https://steve-tseng-portfolio.firebaseio.com",
-      storageBucket: "steve-tseng-portfolio.appspot.com",
-    };
-    firebase.initializeApp(config);
-  </script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAn7zpk17ffO6tVIyamIqXAXkN-8k2d-As",
+        authDomain: "steve-tseng-portfolio.firebaseapp.com",
+        databaseURL: "https://steve-tseng-portfolio.firebaseio.com",
+        storageBucket: "steve-tseng-portfolio.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
 
 <body>
 
@@ -126,11 +127,9 @@
 
 <div class="angular">
   <div ng-app="myApp" class="app">
-    <!--
     <div ng-controller="SampleCtrl">
-    <input type="text" ng-model="data.text"/>
-    <h1>You said: {{ data.text }}</h1>
-    </div> -->
+
+
     <label>Employee Name</label>
     <input type="text" id="employeeName" ng-model="employeeName"></br>
     <label>Employee Age</label>
@@ -142,8 +141,56 @@
       </button>
     </div>
 
+
+      <table class="table table-bordered">
+        <thead>
+          <th>ID</th>
+          <th>Material</th>
+          <th>Description</th>
+        </thead>
+              <tbody ng-repeat="material in materials">
+                <tr>
+                  <td>{{material.id}}</td>
+                  <td>{{material.name}}</td>
+                  <td>{{material.description}}</td>
+                </tr>
+              </tbody>
+      </table>
+
+    </div>
   </div>
 </div>
 
   </body>
 </html>
+
+
+<!--
+      <table class="table table-bordered">
+        <thead>
+          <th>Employee Name</th>
+          <th>Age</th>
+        </thead>
+
+        <tbody ng-repeat="employee in employees">
+          <tr>
+            <td>{{employee.employeeName}}</td>
+            <td>{{employee.employeeAge}}</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    <input type="text" ng-model="data.text"/>
+    <h1>You said: {{ data.text }}</h1>
+    </div>
+    <label>Employee Name</label>
+    <input type="text" id="employeeName" ng-model="employeeName"></br>
+    <label>Employee Age</label>
+    <input type="text" id="employeeAge" ng-model="employeeAge"></br>
+
+    <div>
+      <button class="btn btn-default" ng-click="saveEmployee()">
+        Save <span class="glyphicon glyphicon-ok"></span>
+      </button>
+    </div>-->
