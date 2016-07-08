@@ -1,6 +1,9 @@
 var app = angular
 	.module("myApp", [
-		"firebase", "ngRoute", "Steve.HomeController"
+		"firebase", 
+		"ngRoute", 
+		"Steve.HomeController",
+		"Steve.product_developmentController"
 	]);
 
 app.config(configFunction);
@@ -8,11 +11,31 @@ app.config(configFunction);
 function configFunction($routeProvider, $locationProvider) {
 
   $routeProvider
-    .when('/first', {
+    .when('/asdf', {
       templateUrl: './partials/home.html',
       controller: 'HomeController'
-    });
+    }).when('/product', {
+    	templateUrl: './partials/product_development.html',
+      controller: 'product_developmentController'
+    }).otherwise({
+    	redirectTo: "index.html"
+    })
 }
+
+// app.controller('MainCtrl', function($scope,$sce) {
+  
+// 	$scope.index = 1;
+  
+//   $scope.urls = [
+//     {
+//     	id: 1,
+//     	page:"./partials/home.html"
+//     },
+//     {
+//     	id: 2,
+//       page:"./partials/product_development.html"
+//     }];
+// });
 
 
 

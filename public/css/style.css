@@ -62,3 +62,12 @@ iframe {
 	height:600px;
 	border-radius: 15px;
 }
+
+.special {
+	font-size:100px;
+}
+
+.home_page {
+	position:relative;
+	top:150px;
+}
