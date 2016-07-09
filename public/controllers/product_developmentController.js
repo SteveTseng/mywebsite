@@ -17,4 +17,32 @@ function product_developmentController($scope) {
 			$('.cylinderHeight').append('<img src="https://advancedcommonsense.files.wordpress.com/2013/02/solidworks-01.jpg" height="100" width="200">');
 		}
 	}
+	$scope.search = function(){
+		$( ".results" ).find(".result").on( "mouseover", function() {
+		  $( this ).css( "background-color", "blue" ).css("width", "300px");
+		}).on("mouseleave", function(){
+		  $( this ).css( "background-color", "white").css("width", "300px");
+		})
+	}
+
+	$scope.materials = [{
+		id: 1,
+		material: 'Plastic',
+		cost: '$0.50 per lb',
+		strength: 'soft'
+	},
+	{
+		id: 2,
+		material: 'Aluminum',
+		cost: '$1.00 per lb',
+		strength: 'medium'
+	},
+	{
+		id: 3,
+		material: 'Steel',
+		cost: '$1.50 per lb',
+		strength: 'hard'
+	}]
+
+
 }
