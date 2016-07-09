@@ -3,8 +3,5 @@ angular
   .controller('HomeController',['$scope', HomeController]);
 
 function HomeController($scope) {
-	$scope.next = function(){
-		$scope.index++;
-		console.log($scope.index)
-	}
+	$scope.productPath = 'index.html#/product';
 }

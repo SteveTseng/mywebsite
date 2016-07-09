@@ -57,9 +57,11 @@ ul {
 
 
 
-iframe {
+.app {
 	width:1000px;
 	height:600px;
+	border:solid;
+	border-color:white;
 	border-radius: 15px;
 }
 
@@ -70,4 +72,9 @@ iframe {
 .home_page {
 	position:relative;
 	top:150px;
+}
+
+
+.cad {
+	display: inline-block;
 }

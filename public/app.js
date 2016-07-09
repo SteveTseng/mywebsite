@@ -11,37 +11,17 @@ app.config(configFunction);
 function configFunction($routeProvider, $locationProvider) {
 
   $routeProvider
-    .when('/asdf', {
+    .when('/', {
       templateUrl: './partials/home.html',
       controller: 'HomeController'
     }).when('/product', {
     	templateUrl: './partials/product_development.html',
       controller: 'product_developmentController'
     }).otherwise({
-    	redirectTo: "index.html"
-    })
+    	redirectTo: "/"
+    });
 }
 
-// app.controller('MainCtrl', function($scope,$sce) {
-  
-// 	$scope.index = 1;
-  
-//   $scope.urls = [
-//     {
-//     	id: 1,
-//     	page:"./partials/home.html"
-//     },
-//     {
-//     	id: 2,
-//       page:"./partials/product_development.html"
-//     }];
-// });
-
-
-
-// app.controller("SampleCtrl", function($scope){
-
-// });
 
 
 

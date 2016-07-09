@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
   <!--css CDN-->
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <!-- jquery CDN-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
   <!--javascript file-->
   <script type="text/javascript" src="./js/javascript.js"></script>
   <!--G storage-->
@@ -17,10 +18,11 @@
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <!-- AngularFire -->
   <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-
+  <!-- Angular route -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.10/angular-route.min.js"></script>
   <!--app pages-->
   <script type="text/javascript" src="./controllers/homeController.js"></script>
+  <script type="text/javascript" src="./controllers/product_developmentController.js"></script>
   <script src="app.js"></script>
     <script>
       // Initialize Firebase
@@ -32,9 +34,17 @@
       };
       firebase.initializeApp(config);
     </script>
+<!--
+<body ng-app='myApp'>
+
+  <div class="container" ng-view></div>
+  <h1>hi</h1>
+</body>
+</html>
+-->
 
 
-<body ng-app="myApp">
+<body>
 
   <nav id="fixedbar">
     <ul id="fixednav">
@@ -44,7 +54,7 @@
     </ul>
   </nav>
 
-  <div class="header" ng-view>
+  <div class="header" > 
   	<div class="col-md-1"></div>
   	<div id="1" class="col-md-1"></div>
   	<div id="2" class="col-md-1"></div>
@@ -128,6 +138,10 @@
 
 <hr>
 
+<div class="angular" ng-app="myApp">
+  <div class="app" ng-view>
+  </div>
+</div>
 
   </body>
 </html>
@@ -186,6 +200,7 @@
 
     <input type="text" ng-model="data.text"/>
     <h1>You said: {{ data.text }}</h1>
+    
     </div>
     <label>Employee Name</label>
     <input type="text" id="employeeName" ng-model="employeeName"></br>

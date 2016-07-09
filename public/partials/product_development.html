@@ -3,6 +3,51 @@
 	<title></title>
 </head>
 <body>
-	<h1>product</h1>
+
+	<h3>Hello CEO 'name', you just realized there is money to be made in the water bucket industry!
+		However, you've also realized that there is fierce competition in the bucket market. You must
+		create a new product that is competitive in carrying capacity, price, and quality. Doing all that and making fat profit! But first you need to design your product!
+	</h3>
+	<h4>First Step, design the prototype bucket in the state-of-the-art 3D Computer Aided Design Software!</h4>
+
+<div class="row">
+  <div class="col-md-3">
+  	<div class="dimensions">
+			<form ng-submit="dimensions()">
+				<p>Diameter</p>
+			  <input type="text" ng-model='diameter'/>
+			  <p>Wall Thickness</p>
+			  <input type="text" ng-model='thickness'/>
+			  <p>Height</p>
+			  <input type="text" ng-model='cylinderHeight'/>
+			  <button type="submit">Draw</button>
+			</form>
+		</div>
+	</div>
+
+  <div class="col-md-3">
+  	<div class="diameter">
+		</div>
+	</div>
+
+  <div class="col-md-3">
+  	<div id="thickness">
+
+		</div>
+	</div>
+
+	  <div class="col-md-3">
+  		<div class="cylinderHeight">
+			</div>
+		</div>
+
+	<form ng-submit="search()">
+		<input type="text" ng-model='searchTerm'></input>
+		<button type="submit">Filter!</button>
+	</form>
+
+
+</div>
+
 </body>
 </html>
