@@ -14,7 +14,7 @@
   <div class="col-md-3">
   	<div class="dimensions">
 			<form ng-submit="dimensions()">
-				<p>Diameter</p>s
+				<p>Diameter</p>
 			  <input type="text" ng-model='diameter'/>
 			  <p>Wall Thickness</p>
 			  <input type="text" ng-model='thickness'/>
@@ -48,12 +48,11 @@
 		<input type="text" ng-model='searchTerm' style="width:300px;"></input>
 		<button type="submit">Find</button>
 	</form>
+
 	<div class="results">
-		<div ng-repeat="material in materials">
-			<div class="result">{{material.material}} {{material.cost}} {{material.strength}}</div>
-		</div>
+		<material ng-repeat="material in materials"></material>
 	</div>
 </div>
-
+<div class="volume">{{materialVolume}}</div>
 </body>
 </html>

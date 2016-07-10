@@ -22,7 +22,20 @@ function configFunction($routeProvider, $locationProvider) {
     });
 }
 
-
+app.directive('material', function(){
+	return {
+		restrict: 'E',
+		template: '<div>{{material.material}} {{material.cost}} {{material.strength}}</div>',
+		link: function($scope, $elem, $attrs) {
+			$elem = this;
+				$(this).on( "mouseover", function() {
+					  $( this ).css( "background-color", "blue" ).css("width", "300px");
+					}).on("mouseleave", function(){
+					  $( this ).css( "background-color", "white").css("width", "300px");
+				})
+			}
+		}
+});
 
 
 // app.controller("SampleCtrl", function($scope, $firebaseObject) {
