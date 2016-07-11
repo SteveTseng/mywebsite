@@ -45,14 +45,29 @@
 <div class="searchResults">
 	<form ng-submit="search()">
 		<p>Material Choice</p>
-		<input type="text" ng-model='searchTerm' style="width:300px;"></input>
+		<input type="text" ng-model='choice' style="width:300px;"></input>
 		<button type="submit">Find</button>
 	</form>
 
 	<div class="results">
 		<material ng-repeat="material in materials"></material>
-	</div>
+		</div>
 </div>
-<div class="volume">{{materialVolume}}</div>
+
+<div class="volume">
+	<p>Material Volume</p>
+	{{0.7854 * cylinderHeight * (diameter * diameter - thickness * thickness) | number:2}}
+</div>
+
+	<div class="prototypeCost">
+		<p>Prototype Cost</P>
+			{{0.7854 * cylinderHeight * (diameter * diameter - thickness * thickness) * 0.5|currency}}
+	</div>
+
+
+<iframe scrolling='no' frameborder='0' allowfullscreen='true' src='http://www.3dcontentcentral.com/external-site-embed.aspx?format=3D&catalogid=364&modelid=1217&width=250&height=250&edraw=true' name='PreviewFrame3D' id='PreviewFrame3D' width='400' height='355'></iframe><br/><a href='http://www.3dcontentcentral.com/download-model.aspx?catalogid=364&id=1217'></a>
+
+<a ng-href="{{manufacturingPath}}"><button>Next</button></a>
+
 </body>
 </html>

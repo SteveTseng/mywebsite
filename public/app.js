@@ -3,7 +3,9 @@ var app = angular
 		"firebase", 
 		"ngRoute", 
 		"Steve.HomeController",
-		"Steve.product_developmentController"
+		"Steve.product_developmentController",
+		"Steve.process_developmentController",
+		"Steve.ChoiceFactory"
 	]);
 
 app.config(configFunction);
@@ -17,6 +19,9 @@ function configFunction($routeProvider, $locationProvider) {
     }).when('/product', {
     	templateUrl: './partials/product_development.html',
       controller: 'product_developmentController'
+    }).when('/process', {
+    	templateUrl: './partials/process_development.html',
+      controller: 'process_developmentController'
     }).otherwise({
     	redirectTo: "/"
     });
@@ -37,6 +42,17 @@ app.directive('material', function(){
 		}
 });
 
+app.directive('process', function(){
+    return {
+        restrict    : 'E',
+        templateUrl : '	<iframe width="400" height="200" ng-src="{{bgSrc}}" frameborder="0" allowfullscreen></iframe>',
+        replace     : true,
+        // pass these two names from attrs into the template scope
+        scope       : {
+            bgSrc : '@'
+        }
+    }
+});
 
 // app.controller("SampleCtrl", function($scope, $firebaseObject) {
 //   var ref = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");

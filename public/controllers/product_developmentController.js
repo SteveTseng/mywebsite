@@ -1,12 +1,12 @@
 angular
   .module('Steve.product_developmentController', ['ngRoute'])
-  .controller('product_developmentController',['$scope', product_developmentController]);
+  .controller('product_developmentController',['$scope','ChoiceFactory', product_developmentController]);
 
-function product_developmentController($scope, $timeout) {
+function product_developmentController($scope, ChoiceFactory) {
 	$scope.diameter = 0;
 	$scope.thickness = 0;
 	$scope.cylinderHeight = 0;
-	$scope.materialVolume = 0.7854*cylinderHeight*(Math.pow(diameter, 2) - Math.pow(diameter-2*thickness, 2));
+	$scope.materialVolume = 0.7854 * $scope.cylinderHeight*(Math.pow($scope.diameter, 2) - Math.pow($scope.thickness, 2));
 	$scope.dimensions = function(){
 		if($scope.diameter == 1){
 			$('.diameter').append('<img src="http://www.sycode.com/products/3ds_import_sw/images/3ds_import_sw.gif" height="100" width="200">');
@@ -18,14 +18,17 @@ function product_developmentController($scope, $timeout) {
 			$('.cylinderHeight').append('<img src="https://advancedcommonsense.files.wordpress.com/2013/02/solidworks-01.jpg" height="100" width="200">');
 		}
 	}
-	// $timeout($scope.search);
-	// $scope.search = function(){
-	// 	$angular.element(document).find('.ng-scope').on( "mouseover", function() {
-	// 	  $( this ).css( "background-color", "blue" ).css("width", "300px");
-	// 	}).on("mouseleave", function(){
-	// 	  $( this ).css( "background-color", "white").css("width", "300px");
-	// 	})
-	// }
+
+	$scope.manufacturingPath = 'index.html#/process';
+
+	$scope.search = function(){
+		// $angular.element(document).find('.ng-scope').on( "mouseover", function() {
+		//   $( this ).css( "background-color", "blue" ).css("width", "300px");
+		// }).on("mouseleave", function(){
+		//   $( this ).css( "background-color", "white").css("width", "300px");
+		// })
+		ChoiceFactory.MakeChoice($scope.choice);
+	}
 
 	$scope.materials = [{
 		id: 1,
@@ -41,6 +44,12 @@ function product_developmentController($scope, $timeout) {
 	},
 	{
 		id: 3,
+		material: 'Tin',
+		cost: '$1.00 per lb',
+		strength: 'medium'
+	},
+	{
+		id: 4,
 		material: 'Steel',
 		cost: '$1.50 per lb',
 		strength: 'hard'
