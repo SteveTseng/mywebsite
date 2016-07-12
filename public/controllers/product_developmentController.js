@@ -6,7 +6,7 @@ function product_developmentController($scope, ChoiceFactory) {
 	$scope.diameter = 0;
 	$scope.thickness = 0;
 	$scope.cylinderHeight = 0;
-	$scope.materialVolume = 0.7854 * $scope.cylinderHeight*(Math.pow($scope.diameter, 2) - Math.pow($scope.thickness, 2));
+	//$scope.materialVolume = 0.7854 * $scope.cylinderHeight*(Math.pow($scope.diameter, 2) - Math.pow($scope.thickness, 2));
 	$scope.dimensions = function(){
 		if($scope.diameter == 1){
 			$('.diameter').append('<img src="http://www.sycode.com/products/3ds_import_sw/images/3ds_import_sw.gif" height="100" width="200">');
@@ -27,7 +27,8 @@ function product_developmentController($scope, ChoiceFactory) {
 		// }).on("mouseleave", function(){
 		//   $( this ).css( "background-color", "white").css("width", "300px");
 		// })
-		ChoiceFactory.MakeChoice($scope.choice);
+		ChoiceFactory.MakeChoice($scope.choice, $scope.diameter, $scope.thickness, $scope.cylinderHeight);
+		console.log(ChoiceFactory.ReturnChoice())
 	}
 
 	$scope.materials = [{

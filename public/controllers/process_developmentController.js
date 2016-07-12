@@ -3,12 +3,12 @@ angular
   .controller('process_developmentController',['$scope','ChoiceFactory', '$sce', process_developmentController]);
 
 function process_developmentController($scope, ChoiceFactory, $sce) {
-	$scope.choice = ChoiceFactory.ReturnChoice();
-	alert($scope.choice)
+	$scope.choice = ChoiceFactory.ReturnChoice().choice;
 	$scope.upfrontCost1 = 0;
 	$scope.costPerUnit1 = 0;
 	$scope.upfrontCost2 = 0;
 	$scope.costPerUnit2 = 0;
+	$scope.qualityPath = "index.html#/quality";
 	$scope.manufacturingProcesses = [{
 		id: 1,
 		material: 'plastic',
