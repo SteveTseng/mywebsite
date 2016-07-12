@@ -2,7 +2,7 @@ angular
   .module('Steve.process_developmentController', ['ngRoute'])
   .controller('process_developmentController',['$scope','ChoiceFactory', '$sce', process_developmentController]);
 
-function process_developmentController($scope, ChoiceFactory,$routeParams, $sce) {
+function process_developmentController($scope, ChoiceFactory, $sce) {
 	$scope.choice = ChoiceFactory.ReturnChoice();
 	alert($scope.choice)
 	$scope.upfrontCost1 = 0;
@@ -47,11 +47,18 @@ function process_developmentController($scope, ChoiceFactory,$routeParams, $sce)
 	function plasticVideos(){
 		$scope.video.first = $sce.trustAsResourceUrl($scope.manufacturingProcesses[0].url);
 		$scope.video.second = $sce.trustAsResourceUrl($scope.manufacturingProcesses[1].url);
-
+		$scope.upfrontCost1 = $scope.manufacturingProcesses[0].upfrontCost;
+		$scope.costPerUnit1 = $scope.manufacturingProcesses[0].costPerUnit;
+		$scope.upfrontCost2 = $scope.manufacturingProcesses[1].upfrontCost;
+		$scope.costPerUnit2 = $scope.manufacturingProcesses[1].costPerUnit;
 	}
 	function metalVideos(){
 		$scope.video.first = $sce.trustAsResourceUrl($scope.manufacturingProcesses[2].url);
 		$scope.video.second = $sce.trustAsResourceUrl($scope.manufacturingProcesses[3].url);
+		$scope.upfrontCost1 = $scope.manufacturingProcesses[2].upfrontCost;
+		$scope.costPerUnit1 = $scope.manufacturingProcesses[2].costPerUnit;
+		$scope.upfrontCost2 = $scope.manufacturingProcesses[3].upfrontCost;
+		$scope.costPerUnit2 = $scope.manufacturingProcesses[3].costPerUnit;
 	}
 
 	if($scope.choice == 'plastic'){
