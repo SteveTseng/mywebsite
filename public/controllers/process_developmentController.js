@@ -1,28 +1,64 @@
 angular
   .module('Steve.process_developmentController', ['ngRoute'])
-  .controller('process_developmentController',['$scope','ChoiceFactory', process_developmentController]);
+  .controller('process_developmentController',['$scope','ChoiceFactory', '$sce', process_developmentController]);
 
-function process_developmentController($scope, ChoiceFactory) {
+function process_developmentController($scope, ChoiceFactory,$routeParams, $sce) {
 	$scope.choice = ChoiceFactory.ReturnChoice();
+	alert($scope.choice)
+	$scope.upfrontCost1 = 0;
+	$scope.costPerUnit1 = 0;
+	$scope.upfrontCost2 = 0;
+	$scope.costPerUnit2 = 0;
 	$scope.manufacturingProcesses = [{
 		id: 1,
 		material: 'plastic',
 		description: '3D Printing',
-		url: 'https://www.youtube.com/embed/Z-vkte46rLY'
+		url: 'https://www.youtube.com/embed/Z-vkte46rLY',
+		upfrontCost: 0,
+		costPerUnit: 5
 	},{
 		id: 2,
 		material: 'plastic',
 		description: 'Injection Molding',
-		url: 'https://www.youtube.com/embed/cpOwXZiHi0o'
+		url: 'https://www.youtube.com/embed/cpOwXZiHi0o',
+		upfrontCost: 30000,
+		costPerUnit: 0.15
 	},{
 		id: 3,
 		material: 'steel',
 		description: 'Sheet Metal Forming (Non-Welded)',
-		url: 'https://www.youtube.com/embed/eeSl2lXzpW4'
+		url: 'https://www.youtube.com/embed/eeSl2lXzpW4',
+		upfrontCost: 10000,
+		costPerUnit: 1.1
 	},{
 		id: 4,
 		material: 'steel',
 		description: 'Sheet Metal Forming (Welded)',
-		url: 'https://www.youtube.com/embed/c-6Niu-Jbps'
+		url: 'https://www.youtube.com/embed/c-6Niu-Jbps',
+		upfrontCost: 8000,
+		costPerUnit: 0.75
 	}];
+
+	$scope.video = {
+		first: '',
+		second: ''
+	}
+
+	function plasticVideos(){
+		$scope.video.first = $sce.trustAsResourceUrl($scope.manufacturingProcesses[0].url);
+		$scope.video.second = $sce.trustAsResourceUrl($scope.manufacturingProcesses[1].url);
+
+	}
+	function metalVideos(){
+		$scope.video.first = $sce.trustAsResourceUrl($scope.manufacturingProcesses[2].url);
+		$scope.video.second = $sce.trustAsResourceUrl($scope.manufacturingProcesses[3].url);
+	}
+
+	if($scope.choice == 'plastic'){
+		plasticVideos();
+	}
+	if($scope.choice == 'metal'){
+		metalVideos();
+	}
+
 }

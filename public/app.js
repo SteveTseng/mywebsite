@@ -42,17 +42,6 @@ app.directive('material', function(){
 		}
 });
 
-app.directive('process', function(){
-    return {
-        restrict    : 'E',
-        templateUrl : '	<iframe width="400" height="200" ng-src="{{bgSrc}}" frameborder="0" allowfullscreen></iframe>',
-        replace     : true,
-        // pass these two names from attrs into the template scope
-        scope       : {
-            bgSrc : '@'
-        }
-    }
-});
 
 // app.controller("SampleCtrl", function($scope, $firebaseObject) {
 //   var ref = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
