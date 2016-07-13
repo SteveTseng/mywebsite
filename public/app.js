@@ -46,6 +46,11 @@ app.directive('material', function(){
 		}
 });
 
+app.filter('percentage', ['$filter', function ($filter) {
+  return function (input, decimals) {
+    return $filter('number')(input * 100, decimals) + '%';
+  };
+}]);
 
 // app.controller("SampleCtrl", function($scope, $firebaseObject) {
 //   var ref = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");

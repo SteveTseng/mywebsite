@@ -3,6 +3,25 @@
 	<title></title>
 </head>
 <body>
-	this is quality
+	<table style="width:50%">
+	  <tr>
+	    <th>Quality Control Items</th>
+	    <th>Status</th>
+	  </tr>
+	  <tr>
+	    <td>Manufacturing Analysis</td>
+	    <td>{{manufacturingAnalysis}}</td>
+	  </tr>
+	  <tr>
+	    <td>Quality Control</td>
+	    <td>
+				<select ng-model="tolerance" ng-options="qualityControlLevel.level for qualityControlLevel in qualityControlLevels" ng-change="toleranceFunction()"></select>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>Scrap Rate</td>
+	    <td>{{scrapRate | percentage:2}}</td>
+	  </tr>
+	</table> 
 </body>
 </html>

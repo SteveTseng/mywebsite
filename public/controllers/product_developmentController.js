@@ -28,7 +28,6 @@ function product_developmentController($scope, ChoiceFactory) {
 		//   $( this ).css( "background-color", "white").css("width", "300px");
 		// })
 		ChoiceFactory.MakeChoice($scope.choice, $scope.diameter, $scope.thickness, $scope.cylinderHeight);
-		console.log(ChoiceFactory.ReturnChoice())
 	}
 
 	$scope.materials = [{
