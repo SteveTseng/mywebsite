@@ -30,8 +30,8 @@ function product_developmentController($scope, ChoiceFactory) {
 
 	$scope.search = function(){
 		ChoiceFactory.MakeChoice($scope.chosenMaterial.type, $scope.diameter, $scope.thickness, $scope.cylinderHeight);
+		console.log(ChoiceFactory.ReturnChoice())
 	}
-	//$scope.$watch($scope.search);
 
 	$scope.chosenMaterial = null;
 	$scope.select = function(materialObject){
@@ -40,31 +40,8 @@ function product_developmentController($scope, ChoiceFactory) {
 		+ ' $' + $scope.chosenMaterial.cost + ' ' + $scope.chosenMaterial.strength;
 		$scope.displayMaterials = [];
 		$scope.search();
+		FinanceFactory.UpdateCost()
 	}
 
 	$scope.displayMaterials = [];
-	// $scope.materials = [{
-	// 	id: 1,
-	// 	material: 'Plastic',
-	// 	cost: '$0.50 per lb',
-	// 	strength: 'soft'
-	// },
-	// {
-	// 	id: 2,
-	// 	material: 'Aluminum',
-	// 	cost: '$1.00 per lb',
-	// 	strength: 'medium'
-	// },
-	// {
-	// 	id: 3,
-	// 	material: 'Tin',
-	// 	cost: '$1.00 per lb',
-	// 	strength: 'medium'
-	// },
-	// {
-	// 	id: 4,
-	// 	material: 'Steel',
-	// 	cost: '$1.50 per lb',
-	// 	strength: 'hard'
-	// }]
 }

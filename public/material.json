@@ -3,50 +3,58 @@
 		{
 			"name":"ABS",
 			"type":"plastic",
-			"cost":4.4,
-			"strength":"soft"
+			"cost":150,
+			"strength":"soft",
+			"costPerUnit":1
 		},
 		{
 			"name":"Acrylic",
 			"type":"plastic",
-			"cost":3.9,
-			"strength":"soft"
+			"cost":155,
+			"strength":"soft",
+			"costPerUnit":1.1
 		},
 		{
 			"name":"Nylon",
 			"type":"plastic",
-			"cost":3.2,
-			"strength":"soft"
+			"cost":170,
+			"strength":"soft",
+			"costPerUnit":1.35
 		},
 		{
 			"name":"Polycarbonate",
 			"type":"plastic",
-			"cost":4.6,
-			"strength":"soft"
+			"cost":190,
+			"strength":"soft",
+			"costPerUnit":1.75
 		},
 		{
 			"name":"Aluminum",
 			"type":"metal",
-			"cost":8,
-			"strength":"medium"
+			"cost":320,
+			"strength":"medium",
+			"costPerUnit":2.2
 		},
 		{
 			"name":"Steel",
 			"type":"metal",
-			"cost":11,
-			"strength":"hard"
+			"cost":345,
+			"strength":"hard",
+			"costPerUnit":2.5
 		},
 		{
 			"name":"Stainless Steel",
 			"type":"metal",
-			"cost":13,
-			"strength":"hard"
+			"cost":395,
+			"strength":"hard",
+			"costPerUnit":2.75
 		},
 		{
 			"name":"Brass",
 			"type":"metal",
-			"cost":10,
-			"strength":"medium"
+			"cost":375,
+			"strength":"medium",
+			"costPerUnit":2.55
 		}
 	]
 }

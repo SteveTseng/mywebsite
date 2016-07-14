@@ -44,6 +44,15 @@ app.filter('percentage', ['$filter', function ($filter) {
   };
 }]);
 
+app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval){
+  $scope.stuff = 0;
+  $interval(function(){
+    $scope.stuff = ChoiceFactory.ReturnChoice().diameter;
+  },1000);
+})
+
+
+
 // app.controller("SampleCtrl", function($scope, $firebaseObject) {
 //   var ref = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
 

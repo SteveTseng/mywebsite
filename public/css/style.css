@@ -61,6 +61,14 @@ ul {
 	border:solid;
 	border-color:white;
 	border-radius: 15px;
+	display: inline-block;
+}
+.monitor {
+	display: inline-block;
+	width:200px;
+	height:400px;
+	background-color: white;
+
 }
 
 .special {

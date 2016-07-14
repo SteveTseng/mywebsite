@@ -2,12 +2,14 @@
   .module('Steve.FinanceFactory', [])
   .factory('FinanceFactory', () => {
   	var account = {
-      cost: 0,
+      cost: [];
       revenue: 0,
       profit: 0
   	};
   	return { 
-  		UpdateCost: function(){
+  		UpdateCost: function($item){
+        var item = {$item};
+        account.cost.push(item);
   		},
   		UpdateRevenue: function(){
   		},
