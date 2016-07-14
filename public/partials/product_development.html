@@ -26,42 +26,27 @@
 	</div>
 
   <div class="col-md-3">
-  	<div class="diameter">
-		</div>
+  	<div class="diameter"></div>
 	</div>
 
   <div class="col-md-3">
-  	<div id="thickness">
-
-		</div>
+  	<div id="thickness"></div>
 	</div>
 
-	  <div class="col-md-3">
-  		<div class="cylinderHeight">
-			</div>
-		</div>
-</div>
-
-<div class="searchResults">
-	<form ng-submit="search()">
-		<p>Material Choice</p>
-		<input type="text" ng-model='choice' style="width:300px;"></input>
-		<button type="submit">Find</button>
-	</form>
-
-	<div class="results">
-		<material ng-repeat="material in materials"></material>
+	<div class="col-md-3">
+  		<div class="cylinderHeight"></div>
 	</div>
 </div>
 
-<div class="volume">
-	<p>Material Volume</p>
-	{{0.7854 * cylinderHeight * (diameter * diameter - thickness * thickness) | number:2}}
-</div>
+	<div class="searchResults">
+		<form>
+			<p>Material Choice</p>
+			<input type="text" ng-model='choice' style="width:300px;" ng-click="resultsActivate()"></input>
+		</form>
 
-	<div class="prototypeCost">
-		<p>Prototype Cost</p>
-			{{0.7854 * cylinderHeight * (diameter * diameter - thickness * thickness) * 0.5|currency}}
+		<div class="results">
+			<material ng-click="select(material)" ng-repeat="material in displayMaterials"></material>
+		</div>
 	</div>
 
 <!-- this must be served over https... which means probably $https
@@ -69,7 +54,7 @@
 
 
 
-<a ng-href="{{manufacturingPath}}"><button>Next</button></a>
+<a ng-href="{{manufacturingPath}}" ><button>Next</button></a>
 
 </body>
 </html>
