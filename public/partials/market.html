@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2>Congratulations! You got new products to sell. You realized the average price of the buckets sold in the market is $15.</h2>
+	<h3>How much do you want to sell each unit for?</h3>
+	<input ng-model="setPrice" ng-change="revenueUpdate()"/> <!--set price, quantity is stored in factory-->
+	<!-- price will influence conversion rate-->
+	<!-- quality control level also influences conversion rate-->
+	<!--Show profit margin.
+		conversion rate = quality(0.9, 0.85, 0.8) * price(highprice difference to market price is low conversion, lowprice difference to market price is high conversion)
+		revenue = quantity * set price * conversion rate
+		profit margin = revenue - cost
+
+	consumers wants quality and low price.
+	higher quality, means more buyers
+	lower price, means more buyers
+	this is a simple version of conversion rate-->
+</body>
+</html>

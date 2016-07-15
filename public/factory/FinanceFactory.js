@@ -19,7 +19,8 @@
           account.cost.push($item);
         }
   		},
-  		UpdateRevenue: function(){
+  		UpdateRevenue: function(revenue){
+        account.revenue = revenue;
   		},
       ReturnAccountInfo: function(){
         return account;

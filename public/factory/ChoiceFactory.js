@@ -7,7 +7,8 @@
       cylinderHeight: 0,
   		choice: '',
       quantity: 0,
-      soldQuantity: 0
+      soldQuantity: 100,
+      qualityControlImpact: 1
   	};
   	return { 
   		MakeChoice: function(choice, diameter, thickness, cylinderHeight){
@@ -18,6 +19,9 @@
   		},
       QuantityChoice: function(quantity){
         data.quantity = quantity;
+      },
+      QualityChoice: function(number){
+        data.qualityControlImpact = number;
       },
       SellingChoice: function(units){
         data.soldQuantity = units;

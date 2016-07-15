@@ -7,7 +7,8 @@ var app = angular
 		"Steve.process_developmentController",
 		"Steve.ChoiceFactory",
 		"Steve.qualityController",
-    "Steve.FinanceFactory"
+    "Steve.FinanceFactory",
+    "Steve.marketController"
 	]);
 
 app.config(configFunction);
@@ -27,6 +28,9 @@ function configFunction($routeProvider, $locationProvider) {
     }).when('/quality', {
     	templateUrl: './partials/quality.html',
       controller: 'qualityController'
+    }).when('/market', {
+      templateUrl: './partials/market.html',
+      controller: 'marketController'
     }).otherwise({
     	redirectTo: "/"
     });
