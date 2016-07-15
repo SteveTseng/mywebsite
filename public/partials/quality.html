@@ -20,8 +20,25 @@
 	  </tr>
 	  <tr>
 	    <td>Scrap Rate</td>
-	    <td>{{scrapRate | percentage:2}}</td>
+	    <td>{{temp | percentage:2}}</td>
 	  </tr>
-	</table> 
+	  <tr>
+	    <td>Passing Rate</td>
+	    <td>{{1 - temp | percentage:2}}</td>
+	  </tr>
+	  <tr>
+	    <td>Trashing</td>
+	    <td>{{trashUnits | number:0}} units</td>
+	  </tr>
+	  <tr>
+	    <td>Accepting</td>
+	    <td>{{acceptedUnits | number:0}} units</td>
+	  </tr>
+	</table>
+
+<div>
+	<a href=""><button ng-click="">Sell Them!</button></a>
+</div>
+
 </body>
 </html>

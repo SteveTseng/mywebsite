@@ -1,8 +1,8 @@
 angular
   .module('Steve.process_developmentController', ['ngRoute'])
-  .controller('process_developmentController',['$scope','ChoiceFactory', '$sce', process_developmentController]);
+  .controller('process_developmentController',['$scope','ChoiceFactory', '$sce', 'FinanceFactory', process_developmentController]);
 
-function process_developmentController($scope, ChoiceFactory, $sce) {
+function process_developmentController($scope, ChoiceFactory, $sce, FinanceFactory) {
 	$scope.choice = ChoiceFactory.ReturnChoice().choice;
 	$scope.upfrontCost1 = 0;
 	$scope.costPerUnit1 = 0;
@@ -69,8 +69,30 @@ function process_developmentController($scope, ChoiceFactory, $sce) {
 	}
 
 	$scope.quantity = 0;
-	$scope.manufacturingPerUnitCost = 
+	$scope.one = 1;
+	$scope.two = 2;
+	$scope.select = 0;
+	$scope.selectProcess = function(option){
+		if(option == 1){
+			if($scope.choice == 'plastic'){
+				$scope.select = $scope.manufacturingProcesses[0].costPerUnit;
+			}
+			if($scope.choice == 'metal'){
+				$scope.select = $scope.manufacturingProcesses[2].costPerUnit
+			}
+		}
+		if(option == 2){
+			if($scope.choice == 'plastic'){
+				$scope.select = $scope.manufacturingProcesses[1].costPerUnit
+			}
+			if($scope.choice == 'metal'){
+				$scope.select = $scope.manufacturingProcesses[3].costPerUnit
+			}
+		}
+	}
 	$scope.updateQuantity = function(){
-		$scope.quantity * $scope.manufacturingPerUnitCost;
+		$scope.total = $scope.quantity * $scope.select;
+		FinanceFactory.UpdateCost({name:'manufacturing',amount:$scope.total});
+		ChoiceFactory.QuantityChoice($scope.quantity);
 	}
 }

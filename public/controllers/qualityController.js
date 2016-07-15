@@ -4,6 +4,7 @@ angular
 
 function qualityController($scope, ChoiceFactory){
 	$scope.dataObj = ChoiceFactory.ReturnChoice();
+	$scope.quantity = $scope.dataObj.quantity;
 	$scope.scrapRate = 0;
 	$scope.qualityControlLevels = [{
 		id:1,
@@ -17,6 +18,7 @@ function qualityController($scope, ChoiceFactory){
 	}];
 	$scope.tolerance = 'Not Yet Chosen';
 	$scope.manufacturingAnalysis = 'TBD';
+	console.log($scope.dataObj)
 
 	if($scope.dataObj.choice == 'plastic'){
 		if($scope.dataObj.thickness >= 0.045 && $scope.dataObj.thickness <= 0.140){
@@ -31,17 +33,25 @@ function qualityController($scope, ChoiceFactory){
 		}
 	}
 
+	$scope.temp = $scope.scrapRate;
+	$scope.trashUnits = 0;
+	$scope.acceptedUnits = 0;
 	$scope.toleranceFunction = function() {
 		if($scope.tolerance.level == 'strict'){
-			$scope.scrapRate *= 1.4;
+			$scope.temp = $scope.scrapRate * 1.4;
 		}else if($scope.tolerance.level == 'tight'){
-			$scope.scrapRate *= 1.15;
+			$scope.temp = $scope.scrapRate * 1.15;
 		}else if($scope.tolerance.level == 'loose'){
-			$scope.scrapRate *= 1.05;
+			$scope.temp = $scope.scrapRate * 1.05;
 		}
+		if($scope.temp > 1) {
+			$scope.temp = 1;
+		}
+	$scope.trashUnits = $scope.temp * $scope.quantity;
+	$scope.acceptedUnits = $scope.quantity - $scope.trashUnits;
+	}
 
-		if($scope.scrapRate > 1) {
-			$scope.scrapRate = 1;
-		}
+	$scope.sellingFunction = function(){
+		ChoiceFactory.SellingChoice($scope.acceptedUnits);
 	}
 }

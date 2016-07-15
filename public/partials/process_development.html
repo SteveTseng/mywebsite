@@ -7,15 +7,15 @@
 	<div>
 		<div class="videos"><iframe width="400" height="300" ng-src='{{video.first}}' frameborder="0" allowfullscreen></iframe>
 		<p>Upfront Cost:</p>{{upfrontCost1 | currency}}<p>Cost Per Unit:</p>{{costPerUnit1 | currency}}
-		<button>Select</button></div>
+		<button ng-click="selectProcess(one)" ng-model="one">Select</button></div>
 		<div class="videos"><iframe width="400" height="300" ng-src='{{video.second}}' frameborder="0" allowfullscreen></iframe>
 		<p>Upfront Cost:</p>{{upfrontCost2 | currency}}<p>Cost Per Unit:</p>{{costPerUnit2 | currency}}
-		<button>Select</button>
+		<button ng-click="selectProcess(two)" ng-model="two">Select</button>
 		</div>
 	</div>
 	<div>
 		<h3>What quantity do you want to make?</h3>
-		<input ng-change="updateQuantity()" ng-model="quantity"/>
+		<input ng-change="updateQuantity()" ng-model="quantity" smart-float/>
 	</div>
 	<a ng-href="{{qualityPath}}"><button>Next</button></a>
 </body>
