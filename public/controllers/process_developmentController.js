@@ -68,4 +68,9 @@ function process_developmentController($scope, ChoiceFactory, $sce) {
 		metalVideos();
 	}
 
+	$scope.quantity = 0;
+	$scope.manufacturingPerUnitCost = 
+	$scope.updateQuantity = function(){
+		$scope.quantity * $scope.manufacturingPerUnitCost;
+	}
 }

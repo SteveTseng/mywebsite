@@ -1,8 +1,8 @@
 angular
   .module('Steve.product_developmentController', ['ngRoute'])
-  .controller('product_developmentController',['$scope','ChoiceFactory', product_developmentController]);
+  .controller('product_developmentController',['$scope','ChoiceFactory', 'FinanceFactory', product_developmentController]);
 
-function product_developmentController($scope, ChoiceFactory) {
+function product_developmentController($scope, ChoiceFactory, FinanceFactory) {
 	$scope.diameter = 0;
 	$scope.thickness = 0;
 	$scope.cylinderHeight = 0;
@@ -30,7 +30,6 @@ function product_developmentController($scope, ChoiceFactory) {
 
 	$scope.search = function(){
 		ChoiceFactory.MakeChoice($scope.chosenMaterial.type, $scope.diameter, $scope.thickness, $scope.cylinderHeight);
-		console.log(ChoiceFactory.ReturnChoice())
 	}
 
 	$scope.chosenMaterial = null;
@@ -40,8 +39,10 @@ function product_developmentController($scope, ChoiceFactory) {
 		+ ' $' + $scope.chosenMaterial.cost + ' ' + $scope.chosenMaterial.strength;
 		$scope.displayMaterials = [];
 		$scope.search();
-		FinanceFactory.UpdateCost()
+		$scope.cost();
 	}
-
 	$scope.displayMaterials = [];
+	$scope.cost = function(){
+		FinanceFactory.UpdateCost({name:'prototype',amount:$scope.chosenMaterial.cost})
+	}
 }

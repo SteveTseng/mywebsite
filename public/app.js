@@ -6,7 +6,8 @@ var app = angular
 		"Steve.product_developmentController",
 		"Steve.process_developmentController",
 		"Steve.ChoiceFactory",
-		"Steve.qualityController"
+		"Steve.qualityController",
+    "Steve.FinanceFactory"
 	]);
 
 app.config(configFunction);
@@ -44,10 +45,14 @@ app.filter('percentage', ['$filter', function ($filter) {
   };
 }]);
 
-app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval){
-  $scope.stuff = 0;
+app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval, FinanceFactory){
+  $scope.items = [];
   $interval(function(){
-    $scope.stuff = ChoiceFactory.ReturnChoice().diameter;
+    $scope.total = 0;
+    $scope.items = FinanceFactory.ReturnAccountInfo().cost;
+    for(var i = 0; i < $scope.items.length; i++){
+      $scope.total += $scope.items[i].amount;
+    }
   },1000);
 })
 

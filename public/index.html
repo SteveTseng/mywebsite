@@ -26,6 +26,7 @@
   <script type="text/javascript" src="./controllers/process_developmentController.js"></script>
   <script type="text/javascript" src="./controllers/qualityController.js"></script>
   <script type="text/javascript" src="./factory/ChoiceFactory.js"></script>
+  <script type="text/javascript" src="./factory/FinanceFactory.js"></script>
   <script src="app.js"></script>
   <script>
       // Initialize Firebase
@@ -132,12 +133,13 @@
 
 <hr>
 
-<div class="angular" ng-app="myApp">
-  <div class="app" ng-view></div>
-  <div class="monitor" ng-controller="monitorCtrl">
-    {{stuff}}
+  <div class="angular" ng-app="myApp">
+    <div class="app" ng-view></div>
+    <div class="monitor" ng-controller="monitorCtrl">
+      <div class="cost" ng-repeat="item in items">{{item.name}}  {{item.amount}}</div>
+      <div class="total">Total: {{total}}</div>
+    </div>
   </div>
-</div>
 
   </body>
 </html>
