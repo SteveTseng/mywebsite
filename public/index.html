@@ -137,8 +137,8 @@
   <div class="angular" ng-app="myApp">
     <div class="app" ng-view></div>
     <div class="monitor" ng-controller="monitorCtrl">
-      <div class="cost" ng-repeat="item in items">{{item.name}}  {{item.amount}}</div>
-      <div class="total">Total: {{total}}</div>
+      <div class="cost" ng-repeat="item in items">{{item.name}}  {{item.amount | currency}}</div>
+      <div class="total">Total: {{total | currency}}</div>
     </div>
   </div>
 

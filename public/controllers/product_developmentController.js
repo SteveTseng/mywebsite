@@ -43,6 +43,6 @@ function product_developmentController($scope, ChoiceFactory, FinanceFactory) {
 	}
 	$scope.displayMaterials = [];
 	$scope.cost = function(){
-		FinanceFactory.UpdateCost({name:'prototype',amount:$scope.chosenMaterial.cost})
+		FinanceFactory.UpdateCost({name:'prototype',amount:-1*$scope.chosenMaterial.cost})
 	}
 }

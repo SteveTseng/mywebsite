@@ -22,7 +22,7 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 		description: 'Injection Molding',
 		url: 'https://www.youtube.com/embed/cpOwXZiHi0o',
 		upfrontCost: 30000,
-		costPerUnit: 0.15
+		costPerUnit: 0.50
 	},{
 		id: 3,
 		material: 'steel',
@@ -76,23 +76,27 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 		if(option == 1){
 			if($scope.choice == 'plastic'){
 				$scope.select = $scope.manufacturingProcesses[0].costPerUnit;
+				$scope.selectedUpfrontCost = $scope.manufacturingProcesses[0].upfrontCost;
 			}
 			if($scope.choice == 'metal'){
-				$scope.select = $scope.manufacturingProcesses[2].costPerUnit
+				$scope.select = $scope.manufacturingProcesses[2].costPerUnit;
+				$scope.selectedUpfrontCost = $scope.manufacturingProcesses[2].upfrontCost;
 			}
 		}
 		if(option == 2){
 			if($scope.choice == 'plastic'){
-				$scope.select = $scope.manufacturingProcesses[1].costPerUnit
+				$scope.select = $scope.manufacturingProcesses[1].costPerUnit;
+				$scope.selectedUpfrontCost = $scope.manufacturingProcesses[1].upfrontCost;
 			}
 			if($scope.choice == 'metal'){
-				$scope.select = $scope.manufacturingProcesses[3].costPerUnit
+				$scope.select = $scope.manufacturingProcesses[3].costPerUnit;
+				$scope.selectedUpfrontCost = $scope.manufacturingProcesses[0].upfrontCost;
 			}
 		}
 	}
 	$scope.updateQuantity = function(){
-		$scope.total = $scope.quantity * $scope.select;
-		FinanceFactory.UpdateCost({name:'manufacturing',amount:$scope.total});
+		$scope.total = $scope.quantity * $scope.select + $scope.selectedUpfrontCost;
+		FinanceFactory.UpdateCost({name:'manufacturing',amount:-1 * $scope.total});
 		ChoiceFactory.QuantityChoice($scope.quantity);
 	}
 }
