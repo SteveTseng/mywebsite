@@ -50,7 +50,7 @@ app.filter('percentage', ['$filter', function ($filter) {
   };
 }]);
 
-app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval, FinanceFactory, ScoreBoardFactory){
+app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval, FinanceFactory, ScoreBoardFactory, $timeout){
   $scope.items = [];
   $interval(function(){
     $scope.total = 0;
@@ -61,6 +61,16 @@ app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval, Finance
   },1000);
 })
 
+app.controller("scoreboardCtrl", function($scope, $timeout){
+  $scope.firebase = new Firebase("https://steve-tseng-portfolio.firebaseio.com/users")
+  $scope.temp = {};
+  $scope.users = [];
+  $scope.firebase.on("child_added", function(snapshot, prevChildKey) {
+    $scope.temp = snapshot.val();
+    $scope.users.push($scope.temp)
+  });
+  
+});
 
 
 // app.controller("SampleCtrl", function($scope, $firebaseObject) {

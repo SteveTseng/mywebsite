@@ -140,10 +140,10 @@
     <div class="monitor" ng-controller="monitorCtrl">
       <div class="cost" ng-repeat="item in items">{{item.name}}  {{item.amount | currency}}</div>
       <div class="total">Total: {{total | currency}}</div>
-
-      <div class="scoreboard" ng-repeat="user in users">{{user.name}} {{user.score}}</div>
     </div>
-
+    <div class="scoreboard" ng-controller="scoreboardCtrl">
+      <div class="scoreboard" ng-repeat="user in users | orderBy:'-profit'">{{user.name}} {{user.profit | number: 0}}</div>
+    </div>
   </div>
 
   </body>

@@ -45,7 +45,7 @@ function marketController($scope, ChoiceFactory, FinanceFactory, ScoreBoardFacto
 		$userRef = $scope.firebase.child('users');
 		$scope.userInfo = {name:$scope.name, email:$scope.email, profit: $scope.profit};
 		$userRef.push($scope.userInfo);
-		ScoreBoardFactory.addUser($scope.userInfo);
+
 		$scope.name = '';
 		$scope.email = '';
 	};
