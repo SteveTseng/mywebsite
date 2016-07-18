@@ -28,6 +28,7 @@
   <script type="text/javascript" src="./controllers/marketController.js"></script>
   <script type="text/javascript" src="./factory/ChoiceFactory.js"></script>
   <script type="text/javascript" src="./factory/FinanceFactory.js"></script>
+  <script type="text/javascript" src="./factory/ScoreBoardFactory.js"></script>
   <script src="app.js"></script>
   <script>
       // Initialize Firebase
@@ -139,7 +140,10 @@
     <div class="monitor" ng-controller="monitorCtrl">
       <div class="cost" ng-repeat="item in items">{{item.name}}  {{item.amount | currency}}</div>
       <div class="total">Total: {{total | currency}}</div>
+
+      <div class="scoreboard" ng-repeat="user in users">{{user.name}} {{user.score}}</div>
     </div>
+
   </div>
 
   </body>

@@ -8,7 +8,7 @@ function product_developmentController($scope, ChoiceFactory, FinanceFactory) {
 	$scope.cylinderHeight = 0;
 	$scope.materialVolume = 0.7854 * $scope.cylinderHeight * ($scope.diameter * $scope.diameter - $scope.thickness * $scope.thickness) * 0.5;
 	$scope.myData = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
-	$scope.myData.on('value', function(snapshot){
+	$scope.myData.once('value', function(snapshot){
 		$scope.materials = snapshot.val().material;
 	});
 	$scope.dimensions = function(){
@@ -43,6 +43,6 @@ function product_developmentController($scope, ChoiceFactory, FinanceFactory) {
 	}
 	$scope.displayMaterials = [];
 	$scope.cost = function(){
-		FinanceFactory.UpdateCost({name:'prototype',amount:-1*$scope.chosenMaterial.cost})
+		FinanceFactory.UpdateCost({name:'prototype',amount:-1 * $scope.chosenMaterial.cost})
 	}
 }

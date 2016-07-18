@@ -1,12 +1,14 @@
 angular
 	.module('Steve.marketController', ['ngRoute'])
-	.controller('marketController',['$scope', 'ChoiceFactory', 'FinanceFactory', marketController]);
+	.controller('marketController',['$scope', 'ChoiceFactory', 'FinanceFactory', 'ScoreBoardFactory', marketController]);
 
-function marketController($scope, ChoiceFactory, FinanceFactory) {
+function marketController($scope, ChoiceFactory, FinanceFactory, ScoreBoardFactory) {
 	$scope.setPrice = 0;
 	$scope.financeData = FinanceFactory.ReturnAccountInfo();
 	$scope.choiceData = ChoiceFactory.ReturnChoice();
 	$scope.conversionRate = 0;
+	$scope.profit = 0;
+
 	$scope.revenueUpdate = function(){
 		$scope.revenue = $scope.choiceData.soldQuantity * $scope.setPrice;
 		FinanceFactory.UpdateRevenue($scope.revenue);
@@ -37,5 +39,14 @@ function marketController($scope, ChoiceFactory, FinanceFactory) {
 		$scope.profit = $scope.revenue + $scope.prototypeCost + $scope.manufacturingCost;
 		FinanceFactory.UpdateCost({name:'revenue', amount:$scope.revenue});
 	}
-}
 
+	$scope.submitScore = function(){
+		$scope.firebase = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
+		$userRef = $scope.firebase.child('users');
+		$scope.userInfo = {name:$scope.name, email:$scope.email, profit: $scope.profit};
+		$userRef.push($scope.userInfo);
+		ScoreBoardFactory.addUser($scope.userInfo);
+		$scope.name = '';
+		$scope.email = '';
+	};
+}

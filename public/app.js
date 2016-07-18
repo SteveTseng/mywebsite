@@ -8,7 +8,8 @@ var app = angular
 		"Steve.ChoiceFactory",
 		"Steve.qualityController",
     "Steve.FinanceFactory",
-    "Steve.marketController"
+    "Steve.marketController",
+    "Steve.ScoreBoardFactory"
 	]);
 
 app.config(configFunction);
@@ -49,7 +50,7 @@ app.filter('percentage', ['$filter', function ($filter) {
   };
 }]);
 
-app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval, FinanceFactory){
+app.controller("monitorCtrl", function($scope, ChoiceFactory, $interval, FinanceFactory, ScoreBoardFactory){
   $scope.items = [];
   $interval(function(){
     $scope.total = 0;

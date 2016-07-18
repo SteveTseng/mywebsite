@@ -10,5 +10,10 @@
 		<h3>Conversion Rate: {{conversionRate | percentage:0}}</h3>
 		<h1>Total Profit: {{profit | currency}}</h1>
 	</div>
+	<form ng-submit="submitScore()">
+		<input type="text" ng-model="name" name="text" />
+		<input type="text" ng-model="email" name="text" />
+  		<input type="submit" id="submit" value="Submit" />
+	</form>
 </body>
 </html>
