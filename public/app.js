@@ -65,11 +65,13 @@ app.controller("scoreboardCtrl", function($scope, $timeout){
   $scope.firebase = new Firebase("https://steve-tseng-portfolio.firebaseio.com/users")
   $scope.temp = {};
   $scope.users = [];
-  $scope.firebase.on("child_added", function(snapshot, prevChildKey) {
+
+  $scope.displaySnapshot = function(snapshot, prevChildKey) {
     $scope.temp = snapshot.val();
-    $scope.users.push($scope.temp)
-  });
+    $scope.users.push($scope.temp);
+  }
   
+  $scope.firebase.on("child_added", $scope.displaySnapshot)
 });
 
 

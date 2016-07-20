@@ -3,10 +3,9 @@
 	<title></title>
 </head>
 <body>
-	<div>
-		<h3>What quantity do you want to make?</h3>
-		<input ng-change="updateQuantity()" ng-model="quantity" smart-float/>
-	</div>
+	<h2>Second Step: Manufacturing Process</h2>
+
+	<h4>Choose a process to mass produce your product</h4>
 	<div>
 		<div class="videos"><iframe width="400" height="300" ng-src='{{video.first}}' frameborder="0" allowfullscreen></iframe>
 		<p>Upfront Cost:</p>{{upfrontCost1 | currency}}<p>Cost Per Unit:</p>{{costPerUnit1 | currency}}
@@ -15,6 +14,11 @@
 		<p>Upfront Cost:</p>{{upfrontCost2 | currency}}<p>Cost Per Unit:</p>{{costPerUnit2 | currency}}
 		<button ng-click="selectProcess(two)" ng-model="two">Select</button>
 		</div>
+	</div>
+	<hr>
+	<div>
+		<h3>What quantity do you want to make?</h3>
+		<input ng-change="updateQuantity()" ng-model="quantity" smart-float/><p>units</p>
 	</div>
 	<a ng-href="{{qualityPath}}"><button>Next</button></a>
 </body>

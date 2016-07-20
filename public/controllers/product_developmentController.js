@@ -4,9 +4,6 @@ angular
 
 function product_developmentController($scope, ChoiceFactory, FinanceFactory) {
 	$scope.placeHolder = 0;
-	// $scope.diameter = 0;
-	// $scope.thickness = 0;
-	// $scope.cylinderHeight = 0;
 	$scope.materialVolume = 0.7854 * $scope.cylinderHeight * ($scope.diameter * $scope.diameter - $scope.thickness * $scope.thickness) * 0.5;
 	$scope.myData = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
 	$scope.myData.once('value', function(snapshot){
