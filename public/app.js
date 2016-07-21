@@ -70,7 +70,6 @@ app.controller("scoreboardCtrl", function($scope, $timeout){
     $scope.temp = snapshot.val();
     $scope.users.push($scope.temp);
   }
-  
   $scope.firebase.on("child_added", $scope.displaySnapshot)
 });
 

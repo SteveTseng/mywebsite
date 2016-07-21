@@ -14,17 +14,14 @@
 
 <div class="row">
   <div class="col-md-3">
-  	<div class="dimensions">
-			<form ng-submit="dimensions()">
-				<p>Diameter (inches)</p>
-			  <input type="text" ng-model='diameter' placeholder="{{placeHolder}}"/>
-			  <p>Wall Thickness (inches)</p>
-			  <input type="text" ng-model='thickness' placeholder="{{placeHolder}}"/>
-			  <p>Height (foot)</p>
-			  <input type="text" ng-model='cylinderHeight' placeholder="{{placeHolder}}"/>
-			  <button type="submit">Draw</button>
-			</form>
-		</div>
+		<form ng-submit="dimensions()">
+			<p>Diameter (inches)</p>
+		  <input type="text" ng-model='diameter' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
+		  <p>Wall Thickness (inches)</p>
+		  <input type="text" ng-model='thickness' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
+		  <p>Height (foot)</p>
+		  <input type="text" ng-model='cylinderHeight' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
+		</form>
 	</div>
 
   <div class="col-md-3">
@@ -51,10 +48,10 @@
 		</div>
 	</div>
 
-<!-- this must be served over https... which means probably $https
-<iframe scrolling='no' frameborder='0' allowfullscreen='true' src='http://www.3dcontentcentral.com/external-site-embed.aspx?format=3D&catalogid=364&modelid=1217&width=250&height=250&edraw=true' name='PreviewFrame3D' id='PreviewFrame3D' width='400' height='355'></iframe><br/><a href='http://www.3dcontentcentral.com/download-model.aspx?catalogid=364&id=1217'></a> -->
 
+<iframe scrolling='no' frameborder='0' allowfullscreen='true' ng-src='{{link}}' name='PreviewFrame3D' id='PreviewFrame3D' width='400' height='355'></iframe><br/>
 </div>
+
 
 <a ng-href="{{manufacturingPath}}"><button>Next</button></a>
 

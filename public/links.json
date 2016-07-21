@@ -1,62 +1,4 @@
 {
-	"material":[
-		{
-			"name":"ABS",
-			"type":"plastic",
-			"cost":150,
-			"strength":"soft",
-			"costPerUnit":1
-		},
-		{
-			"name":"Acrylic",
-			"type":"plastic",
-			"cost":155,
-			"strength":"soft",
-			"costPerUnit":1.1
-		},
-		{
-			"name":"Nylon",
-			"type":"plastic",
-			"cost":170,
-			"strength":"soft",
-			"costPerUnit":1.35
-		},
-		{
-			"name":"Polycarbonate",
-			"type":"plastic",
-			"cost":190,
-			"strength":"soft",
-			"costPerUnit":1.75
-		},
-		{
-			"name":"Aluminum",
-			"type":"metal",
-			"cost":320,
-			"strength":"medium",
-			"costPerUnit":2.2
-		},
-		{
-			"name":"Steel",
-			"type":"metal",
-			"cost":345,
-			"strength":"hard",
-			"costPerUnit":2.5
-		},
-		{
-			"name":"Stainless Steel",
-			"type":"metal",
-			"cost":395,
-			"strength":"hard",
-			"costPerUnit":2.75
-		},
-		{
-			"name":"Brass",
-			"type":"metal",
-			"cost":375,
-			"strength":"medium",
-			"costPerUnit":2.55
-		}
-	],
 	"links":[
 		{
 			"diameter":18,
@@ -237,13 +179,6 @@
 			"thickness":0.02,
 			"height":12,
 			"url":"700950"
-		}
-	],
-	"users": [
-		{
-			"name": "steve",
-			"email": "steve@gmail.com",
-			"profit": 20000
 		}
 	]
 }
