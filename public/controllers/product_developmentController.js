@@ -23,41 +23,65 @@ function product_developmentController($scope, ChoiceFactory, FinanceFactory, $s
 		$scope.choice = $scope.chosenMaterial.name + ' ' + $scope.chosenMaterial.type
 		+ ' $' + $scope.chosenMaterial.cost + ' ' + $scope.chosenMaterial.strength;
 		$scope.displayMaterials = [];
-		$scope.search();
+		$scope.setSpecs();
 		$scope.cost();
 	}
 
 	$scope.displayMaterials = [];
 	$scope.cost = function(){
-		FinanceFactory.UpdateCost({name:'prototype',amount:-1 * $scope.chosenMaterial.cost})
+		FinanceFactory.UpdateCost({name:'prototype',amount:-1 * $scope.chosenMaterial.cost});
+	}
+
+	$scope.setSpecs = function(){
+		ChoiceFactory.MakeChoice($scope.chosenMaterial.type, $scope.diameter, $scope.thickness, $scope.cylinderHeight);
 	}
 
 	$scope.specsLink = function (){
 		var selectingLink = function(){
 			angular.forEach($scope.fireLinks, function(value,key){
 				var eachObj = value;
-				specsRounding();
-				if(eachObj.diameter == $scope.diameter && eachObj.thickness == $scope.thickness && eachObj.height == $scope.cylinderHeight){
+				var tempObj = {
+					diameter: $scope.diameter,
+					thickness: $scope.thickness,
+					cylinderHeight: $scope.cylinderHeight
+				}
+
+				if($scope.diameter && $scope.thickness && $scope.cylinderHeight){
+					specsRounding(tempObj);
+				}
+
+
+				if(eachObj.diameter == tempObj.diameter && eachObj.thickness == tempObj.thickness && eachObj.height == tempObj.cylinderHeight){
 					$scope.link = $sce.trustAsResourceUrl("http://www.3dcontentcentral.com/external-site-embed.aspx?format=3D&catalogid=171&modelid=" + eachObj.url + "&width=250&height=250&edraw=true")
 				}
 			}) 
 		}
-		specsRounding = function(){
+		specsRounding = function(tempObj){
 			if($scope.diameter <= 6){
-				$scope.diameter = 6;
+				tempObj.diameter = 6;
 			} else if ($scope.diameter >= 18){
-				$scope.diameter = 18;
+				tempObj.diameter = 18;
 			} else {
-				$scope.diameter = 12;
-			}
-			if($scope.thickness <= 0.02){
-				$scope.thickness = 0.02;
-			} else if ($scope.thickness >= 0.2){
-				$scope.thickness = 0.2;
-			} else {
-				$scope.thickness = 0.0925;
+				tempObj.diameter = 12;
 			}
 
+			if($scope.thickness <= 0.02){
+				tempObj.thickness = 0.02;
+			} else if ($scope.thickness >= 0.2){
+				tempObj.thickness = 0.2;
+			} else {
+				tempObj.thickness = 0.0925;
+			}
+
+			if($scope.cylinderHeight <= 12){
+				tempObj.cylinderHeight = 12;
+			} else if ($scope.cylinderHeight >= 24){
+				tempObj.cylinderHeight = 24;
+			} else {
+				tempObj.cylinderHeight = 18;
+			}
+
+			return tempObj;
 		}
 		$timeout(selectingLink, 1000);
 	}

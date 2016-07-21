@@ -10,9 +10,6 @@
 	border-top: 3px double #8c8b8b;
 }
 
-.container {
-
-}
 
 .col-md-6 {
 	padding:5px;
@@ -51,7 +48,7 @@ ul {
 }
 
 .angular {
-	background-color: #E62A39;
+	background-color: #353334;
 	height:1000px;
 }
 
@@ -59,9 +56,11 @@ ul {
 	width:1000px;
 	height:600px;
 	border:solid;
-	border-color:white;
-	border-radius: 15px;
+	border-color:#B3B2B3;
+	border-radius: 5px;
 	display: inline-block;
+	background-color: #F51C49;
+	color:#CDE5DE;
 }
 .monitor {
 	display: inline-block;
