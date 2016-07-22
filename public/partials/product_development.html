@@ -4,56 +4,47 @@
 </head>
 <body>
 
-	<h3>Hello Entrepeneur!, you just realized there is money to be made in the water bucket industry!
-		However, you've also realized that there is fierce competition in the bucket market. You must
-		create a new product that is competitive in carrying capacity, price, and quality. Doing all that and making fat profit! But first you need to design your product!
-	</h3>
+	<h3>Hello Entrepeneur!</h3>
+		<h4>There is money to be made in the water bucket industry!
+		The market competition is fierce, but you are not intimidated. You will
+		create a new bucket product that is competitive in price, and quality. Profit awaits!</h4>
 
 <div>
-	<h4>First Step, design the prototype bucket in the state-of-the-art 3D Computer Aided Design Software!</h4>
+	<h4>First Step, design the prototype bucket in 
+		the state-of-the-art 3D Computer Aided Design Software!</h4>
+	<div class="row">
+	  <div class="col-md-2">
+				<p>Diameter (inches)</p>
+			  <input class="form-control" type="text" ng-model='diameter' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
+			  <p>Wall Thickness (inches)</p>
+			  <input class="form-control" type="text" ng-model='thickness' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
+			  <p>Height (inches)</p>
+			  <input class="form-control" type="text" ng-model='cylinderHeight' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
+		</div>
 
-<div class="row">
-  <div class="col-md-3">
-		<form ng-submit="dimensions()">
-			<p>Diameter (inches)</p>
-		  <input type="text" ng-model='diameter' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
-		  <p>Wall Thickness (inches)</p>
-		  <input type="text" ng-model='thickness' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
-		  <p>Height (foot)</p>
-		  <input type="text" ng-model='cylinderHeight' ng-change="specsLink()" placeholder="{{placeHolder}}"/>
-		</form>
-	</div>
 
-  <div class="col-md-3">
-  	<div class="diameter"></div>
-	</div>
+		<div class="col-md-4">
+			<div class="searchResults">
+				<form>
+					<p>Material Choice</p>
+					<input class="form-control" type="text" ng-model='choice' ng-click="resultsActivate()"></input>
+				</form>
 
-  <div class="col-md-3">
-  	<div id="thickness"></div>
-	</div>
+				<div class="results">
+					<material ng-click="select(material)" ng-repeat="material in displayMaterials"></material>
+				</div>
+			</div>
+		</div>
 
-	<div class="col-md-3">
-  		<div class="cylinderHeight"></div>
-	</div>
-</div>
-
-	<div class="searchResults">
-		<form>
-			<p>Material Choice</p>
-			<input type="text" ng-model='choice' style="width:300px;" ng-click="resultsActivate()"></input>
-		</form>
-
-		<div class="results">
-			<material ng-click="select(material)" ng-repeat="material in displayMaterials"></material>
+		<div class="col-md-6">
+			<iframe scrolling='no' frameborder='0' allowfullscreen='true' ng-src='{{link}}' name='PreviewFrame3D' id='PreviewFrame3D' width='400' height='355'></iframe><br/>
 		</div>
 	</div>
-
-
-<iframe scrolling='no' frameborder='0' allowfullscreen='true' ng-src='{{link}}' name='PreviewFrame3D' id='PreviewFrame3D' width='400' height='355'></iframe><br/>
 </div>
 
-
-<a ng-href="{{manufacturingPath}}"><button>Next</button></a>
+<div class="nextButton">
+	<a ng-href="{{manufacturingPath}}"><button class="btn btn-primary" alignment="right">Next</button></a>
+</div>
 
 </body>
 </html>

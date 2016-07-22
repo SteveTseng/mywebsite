@@ -3,23 +3,47 @@
 	<title></title>
 </head>
 <body>
-	<h2>Congratulations! You got new products to sell. You realized the average price of the buckets sold in the market is $15.</h2>
-	<h3>How much do you want to sell each unit for?</h3>
-	<input ng-model="setPrice" ng-change="revenueUpdate()"/>
-	<div>
-		<h3>Conversion Rate: {{conversionRate | percentage:0}}</h3>
-		<h1>Total Profit: {{profit | currency}}</h1>
-	</div>
+
+<div class="profit">
+	<h1>Congratulations!</h1> 
+	<h4>You got new products to sell. You realized the average price of the buckets sold in the market is $15.</h4>
 
 	<div>
-		<h4>Submit your Score!</h4>
-			<form ng-submit="submitScore()">
-				Name:
-				<input type="text" ng-model="name" name="text" />
-				Email:
-				<input type="text" ng-model="email" name="text" />
-		  		<input type="submit" id="submit" value="Submit" />
-			</form>
+		<h3>How much do you want to sell each unit for?</h3>
 	</div>
+
+	<form class="form-inline">
+	  <div class="form-group">
+	    <div class="input-group">
+				<div class="input-group-addon">$</div>
+				<input class="form-control" ng-model="setPrice" ng-change="revenueUpdate()"/>
+			</div>
+				<h5>Conversion Rate: {{conversionRate | percentage:0}}</h5>
+			<div>
+				<h1>Total Profit: {{profit | currency}}</h1>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<div ng-show="setPrice" class="scoreSubmit">
+	<h4>Submit your Score!</h4>
+		<form class="form-inline"ng-submit="submitScore()">
+			<div class="form-group">
+				<label>Name</label>
+				<input class="form-control" type="text" ng-model="name" name="text" />
+			</div>
+			<div class="form-group">			
+				<label>Email</label>
+				<input class="form-control" type="text" ng-model="email" name="text" />
+			</div>
+			<div class="form-group">
+	  		<input class="btn btn-primary" type="submit" id="submit" value="Submit" />
+	  	</div>
+		</form>
+</div>
+
 </body>
 </html>
+

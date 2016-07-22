@@ -135,16 +135,35 @@
 
 <hr>
 
-  <div class="angular" ng-app="myApp">
-    <div class="app" ng-view></div>
-    <div class="monitor" ng-controller="monitorCtrl">
-      <div class="cost" ng-repeat="item in items">{{item.name}}  {{item.amount | currency}}</div>
-      <div class="total">Total: {{total | currency}}</div>
-    </div>
-    <div class="scoreboard" ng-controller="scoreboardCtrl">
-      <div class="scoreboard" ng-repeat="user in users | orderBy:'-profit'">{{user.name}} {{user.profit | number: 0}}</div>
+<div class="angular" ng-app="myApp">
+  <div class="wrap">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+        <div class="scoreboard" ng-controller="scoreboardCtrl">
+          <h3>High Scores</h3>
+          <h4><div class="scoreboard" ng-repeat="user in users | orderBy:'-profit'">{{user.name}} ${{user.profit | number: 0}}</div></h4>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="app" ng-view></div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="monitor" ng-controller="monitorCtrl">
+          <h3>
+            <div class="cost" ng-repeat="item in items">{{item.name}}  {{item.amount | currency}}</div>
+            <div class="total">Total: {{total | currency}}</div>
+          </h3>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
     </div>
   </div>
+</div>
+
 
   </body>
 </html>

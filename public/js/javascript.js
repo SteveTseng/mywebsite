@@ -12,14 +12,19 @@ $(document).ready( ()=> {
 		  	$(".header").find('.menu_items').remove()
 		  });
 
-
+		var visible = false;
 	  $(window).on('scroll',function() {
 	    var scrolltop = $(this).scrollTop();
-	    if(scrolltop >= 0) {
+	    if(scrolltop >= 1) {
 	      $('nav').fadeIn(250);
 	    }
-	    else if(scrolltop <= 210) {
-	      $('nav').fadeOut(250);
+
+	    if(scrolltop > 500 && !visible){
+	    	visible = true;
+	    	$('nav').find('ul').append("<li><img id='angular' height='75' width='75' src='http://michaelseiler.net/wp-content/uploads/2013/10/angularjs.png'></li>")
+	    } else if (scrolltop < 500){
+	    	visible = false;
+	    	$('#angular').remove();
 	    }
 	  });
 });
