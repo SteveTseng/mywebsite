@@ -2,7 +2,7 @@
   .module('Steve.FinanceFactory', [])
   .factory('FinanceFactory', () => {
   	var account = {
-      cost: [{name:'investment',amount:50000}],
+      cost: [{name:'Investment',amount:50000}],
       revenue: 0,
       profit: 0
   	};

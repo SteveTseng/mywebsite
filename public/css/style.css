@@ -30,15 +30,15 @@ div {
 }
 
 /* hidden fixed navigation */
-#fixedbar { 
+nav { 
   display: none;
   position: fixed;
   top: 85%;
-  left: 78%;
+  left: 70%;
   z-index: 1;
 }
 
-ul#fixednav li {
+ul li {
 	display:inline;
 }
  

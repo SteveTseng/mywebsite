@@ -52,7 +52,7 @@ function product_developmentController($scope, ChoiceFactory, FinanceFactory, $s
 
 
 				if(eachObj.diameter == tempObj.diameter && eachObj.thickness == tempObj.thickness && eachObj.height == tempObj.cylinderHeight){
-					$scope.link = $sce.trustAsResourceUrl("http://www.3dcontentcentral.com/external-site-embed.aspx?format=3D&catalogid=171&modelid=" + eachObj.url + "&width=250&height=250&edraw=true")
+					$scope.link = $sce.trustAsResourceUrl("https://www.3dcontentcentral.com/external-site-embed.aspx?format=3D&catalogid=171&modelid=" + eachObj.url + "&width=250&height=250&edraw=true")
 				}
 			}) 
 		}
