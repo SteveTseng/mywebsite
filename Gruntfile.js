@@ -55,8 +55,10 @@ module.exports = function(grunt) {
 		    }
 		},
 		concat:{
-			src:['./public/min/app.js','./public/min/deps.js'],
-			dest: '.public/min/app.js'
+			script:{
+				src:['./public/min/deps.js','./public/min/app.js'],
+				dest: './public/script/script.js'
+			}
 		}
 	});
     //load grunt tasks
