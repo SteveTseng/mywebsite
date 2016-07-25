@@ -1,4 +1,4 @@
-$(document).ready( ()=> {
+$(document).ready( function() {
 		$( ".header" )
 		  .mouseenter(function() {
 		  	$( "#1" ).append('<a href="https://www.facebook.com/stevetseng17"><img class="menu_items" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" height="40" width="40"></a>')

@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 		            './public/min-safe/js/process_developmentController.js': ['./public/controllers/process_developmentController.js'],
 		            './public/min-safe/js/product_developmentController.js': ['./public/controllers/product_developmentController.js'],
 		            './public/min-safe/js/qualityController.js': ['./public/controllers/qualityController.js'],
-		            './public/min-safe/app.js': ['./public/app.js']
+		            './public/min-safe/app.js': ['./public/app.js'],
 		        }
 		    },
 		},
@@ -24,6 +24,13 @@ module.exports = function(grunt) {
 	    js: { //target
 	        src: ['./public/min-safe/app.js', './public/min-safe/js/*.js'],
 	        dest: './public/min/app.js'
+	    },
+	    deps: {
+	    	src: [
+	    		'bower_components/jquery/dist/jquery.js',
+	    		'bower_components/angular/angular.js'
+	    	],
+	    	dest: './public/min/app.js'
 	    }
 		},
 		uglify: {
