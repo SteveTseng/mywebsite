@@ -1,6 +1,6 @@
  angular
   .module('Steve.ChoiceFactory', [])
-  .factory('ChoiceFactory', () => {
+  .factory('ChoiceFactory', function() {
   	var data = {
       diameter: 0,
       thickness: 0,

@@ -1,6 +1,6 @@
  angular
   .module('Steve.FinanceFactory', [])
-  .factory('FinanceFactory', () => {
+  .factory('FinanceFactory', function() {
   	var account = {
       cost: [{name:'Investment',amount:50000}],
       revenue: 0,

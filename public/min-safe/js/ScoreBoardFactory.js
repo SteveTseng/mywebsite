@@ -1,6 +1,6 @@
  angular
   .module('Steve.ScoreBoardFactory', [])
-  .factory('ScoreBoardFactory', () => {
+  .factory('ScoreBoardFactory', function() {
   	var users = [
       {name: 'Steve',score: 50000}
     ];
