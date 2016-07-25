@@ -21,23 +21,42 @@ module.exports = function(grunt) {
 		    },
 		},
 		concat: {
-	    js: { //target
-	        src: ['./public/min-safe/app.js', './public/min-safe/js/*.js'],
-	        dest: './public/min/app.js'
-	    },
-	    deps: {
-	    	src: [
-	    		'bower_components/jquery/dist/jquery.js',
-	    		'bower_components/angular/angular.js'
-	    	],
-	    	dest: './public/min/app.js'
-	    }
+		    js: { //target
+		        src: [
+		        	'./public/min-safe/app.js',
+		        	'./public/min-safe/js/*.js',
+		        	'./public/js/javascript.js',
+		        ],
+		        dest: './public/min/app.js'
+		    },
+		    deps: {
+		    	src:[
+			    	'./public/bower_components/jquery/dist/jquery.min.js',
+			    	'./public/bower_components/bootstrap/dist/js/bootstrap.min.js',
+		    		'./public/bower_components/angular/angular.min.js',
+		    		'./public/bower_components/angularfire/dist/angularfire.min.js',
+		    		'./public/bower_components/firebase/firebase.js',
+		    		'./public/bower_components/angular-route/angular-route.min.js'
+		    	],
+		    	dest:'./public/min/deps.js'
+		    },
+		    css: {
+		    	src:[
+			    	'./public/bower_components/bootstrap/dist/css/bootstrap.min.css', 
+			    	'./public/css/style.css'
+		    	],
+		    	dest: './public/min/style.css'
+		    }
 		},
 		uglify: {
-	    js: { //target
-	        src: ['./public/min/app.js'],
-	        dest: './public/min/app.js'
-	    }
+		    js: { //target
+		        src: ['./public/min/app.js'],
+		        dest: './public/min/app.js'
+		    }
+		},
+		concat:{
+			src:['./public/min/app.js','./public/min/deps.js'],
+			dest: '.public/min/app.js'
 		}
 	});
     //load grunt tasks
