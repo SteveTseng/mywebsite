@@ -1,4 +1,3 @@
-
 $(document).ready( function() {
 		$( ".header" )
 		  .mouseenter(function() {
@@ -17,22 +16,22 @@ $(document).ready( function() {
 		var htmlCssJs = false;
 
 	  	$(window).on('scroll',function() {
-	    var scrolltop = $(this).scrollTop();
-	    if(scrolltop >= 5) {
-	    	if(!htmlCssJs){
-	      	$('nav').find('ul').append('<li><img src="./img/html.png" height="75" width="75"></li>');
-	      	$('nav').find('ul').append('<li><img src="./img/css3.svg" height="75" width="75"></li>');
-	      	$('nav').find('ul').append('<li><img src="./img/javascript.png" height="75" width="55"></li>');
-	    		htmlCssJs = true;
-	      }
-	    }
-	    if(scrolltop > 500 && !visible){
-	    	visible = true;
-	    	$('nav').find('ul').append("<li><img id='angular' height='70' width='70' src='./img/angular.png'></li>")
-	    } else if (scrolltop < 500){
-	    	visible = false;
-	    	$('#angular').remove();
-	    }
+		    var scrolltop = $(this).scrollTop();
+		    if(scrolltop >= 5) {
+		    	if(!htmlCssJs){
+		      	$('.nav').find('.navy').append('<li><img src="./src/html.png" height="75" width="75"></li>');
+		      	$('.nav').find('.navy').append('<li><img src="./src/css3.svg" height="75" width="75"></li>');
+		      	$('.nav').find('.navy').append('<li><img src="./src/javascript.png" height="75" width="55"></li>');
+		    		htmlCssJs = true;
+		      }
+		    }
+		    if(scrolltop > 500 && !visible){
+		    	visible = true;
+		    	$('.nav').find('.navy').append("<li><img id='angular' height='70' width='70' src='./src/angular.png'></li>")
+		    } else if (scrolltop < 500){
+		    	visible = false;
+		    	$('#angular').remove();
+		    }
 	  	})
 });
 

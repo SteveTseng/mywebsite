@@ -40,32 +40,58 @@ module.exports = function(grunt) {
 		    	],
 		    	dest:'./public/min/deps.js'
 		    },
-		    css: {
-		    	src:[
-			    	'./public/bower_components/bootstrap/dist/css/bootstrap.min.css', 
-			    	'./public/css/style.css'
-		    	],
-		    	dest: './public/min/style.css'
+		    finalfile:{
+		    	src:['./public/min/deps.js','./public/min/app.js'],
+		    	dest: './public/min/javascript.js'
 		    }
 		},
 		uglify: {
-		    js: { //target
-		        src: ['./public/min/app.js'],
-		        dest: './public/min/app.js'
-		    }
+	    js: { //target
+	        src: ['./public/min/app.js'],
+	        dest: './public/min/app.js'
+	    }
 		},
-		concat:{
-			script:{
-				src:['./public/min/deps.js','./public/min/app.js'],
-				dest: './public/script/script.js'
-			}
-		}
+		cssmin: {
+		  minify: {
+		    files: [{
+		      expand: true,
+		      cwd: './public/css/',
+		      src: ['style.css'],
+		      dest: './public/min',
+		      ext: '.min.css'
+		    }]
+		  },
+		  options: {
+		    shorthandCompacting: false,
+		    roundingPrecision: -1
+		  },
+		  combine: {
+		    files: {
+		      './public/min/finalstyle.css': ['./public/bower_components/bootstrap/dist/css/bootstrap.min.css','./public/css/style.css']
+		    }
+		  }
+		},
+		imagemin: {                          // Task
+	    static: {                          // Target
+	      files: {                         // Dictionary of files
+	        './public/src/angular.png': './public/img/angular.png', // 'destination': 'source'
+	        './public/src/css3.svg': './public/img/css3.svg',
+	        './public/src/html.png': './public/img/html.png',
+	        './public/src/javascript.png': './public/img/javascript.png'
+	      }
+	    },
+  	}
+
+
+
 	});
     //load grunt tasks
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-ng-annotate'); 
+  grunt.loadNpmTasks('grunt-ng-annotate');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
   //register grunt default task
-  grunt.registerTask('default', ['ngAnnotate', 'concat', 'uglify']);
+  grunt.registerTask('default', ['ngAnnotate', 'concat', 'uglify','cssmin','imagemin']);
 }

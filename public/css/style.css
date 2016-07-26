@@ -29,13 +29,17 @@ div {
 	vertical-align: center;
 }
 
-/* hidden fixed navigation */
-nav { 
-  display: none;
+
+.nav { 
+  display: inline;
   position: fixed;
   top: 85%;
   left: 70%;
   z-index: 1;
+}
+
+li {
+	display:block;
 }
 
 ul li {
