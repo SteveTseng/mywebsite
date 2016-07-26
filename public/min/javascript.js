@@ -987,11 +987,9 @@ app.controller("monitorCtrl", ['$scope', 'ChoiceFactory', '$interval', 'FinanceF
 }])
 
 app.controller("scoreboardCtrl", ['$scope', '$timeout', function($scope, $timeout){
-  //$scope.firebase = new Firebase("https://steve-tseng-portfolio.firebaseio.com/users")
-  $scope.firebase = firebase.database().ref();
+  $scope.firebase = firebase.database().ref('users');
   $scope.temp = {};
   $scope.users = [];
-
   $scope.displaySnapshot = function(snapshot, prevChildKey) {
     $scope.temp = snapshot.val();
     $scope.users.push($scope.temp);
@@ -1125,7 +1123,6 @@ function marketController($scope, ChoiceFactory, FinanceFactory, ScoreBoardFacto
 	}
 
 	$scope.submitScore = function(){
-		//$scope.firebase = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
 		$scope.firebase = firebase.database().ref();
 		$userRef = $scope.firebase.child('users');
 		$scope.userInfo = {name:$scope.name, email:$scope.email, profit: $scope.profit};
@@ -1244,8 +1241,6 @@ angular
 function product_developmentController($scope, ChoiceFactory, FinanceFactory, $sce, $timeout) {
 	$scope.placeHolder = 0;
 	$scope.fireData = [];
-	//$scope.materialVolume = 0.7854 * $scope.cylinderHeight * ($scope.diameter * $scope.diameter - $scope.thickness * $scope.thickness) * 0.5;
-	//$scope.myData = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
 	$scope.myData = firebase.database().ref();
 	$scope.myData.once('value', function(snapshot){
 		$scope.materials = snapshot.val().material;

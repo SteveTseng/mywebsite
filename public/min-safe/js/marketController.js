@@ -41,7 +41,6 @@ function marketController($scope, ChoiceFactory, FinanceFactory, ScoreBoardFacto
 	}
 
 	$scope.submitScore = function(){
-		//$scope.firebase = new Firebase("https://steve-tseng-portfolio.firebaseio.com/");
 		$scope.firebase = firebase.database().ref();
 		$userRef = $scope.firebase.child('users');
 		$scope.userInfo = {name:$scope.name, email:$scope.email, profit: $scope.profit};

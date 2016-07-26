@@ -63,11 +63,9 @@ app.controller("monitorCtrl", ['$scope', 'ChoiceFactory', '$interval', 'FinanceF
 }])
 
 app.controller("scoreboardCtrl", ['$scope', '$timeout', function($scope, $timeout){
-  //$scope.firebase = new Firebase("https://steve-tseng-portfolio.firebaseio.com/users")
-  $scope.firebase = firebase.database().ref();
+  $scope.firebase = firebase.database().ref('users');
   $scope.temp = {};
   $scope.users = [];
-
   $scope.displaySnapshot = function(snapshot, prevChildKey) {
     $scope.temp = snapshot.val();
     $scope.users.push($scope.temp);
