@@ -1,12 +1,13 @@
 <html>
 <head>
-	<title></title>
+	<title>Manufacturing Process</title>
 </head>
 <body>
 
 <h2>Second Step: Manufacturing Process</h2>
-
 <h4>Choose a process to mass produce your product</h4>
+
+<!-- users may not be familiar with manufacturing process, videos and costs are provided here-->
 <div>
 	<div class="videos"><iframe width="400" height="250" ng-src='{{video.first}}' frameborder="0" allowfullscreen></iframe>
 	<p>Upfront Cost:</p>{{upfrontCost1 | currency}}<p>Cost Per Unit:</p>{{costPerUnit1 | currency}}
@@ -17,23 +18,22 @@
 	</div>
 </div>
 
-
+<!--the quantities to make is shown after the manufacturing process is chosen-->
 <div ng-show="select !== 0">
-<form class="form-inline">
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">Qty</div>
-      <input type="text" class="form-control" ng-change="updateQuantity()" ng-model="quantity" smart-float placeholder="10000"/>
-      <div class="input-group-addon">Units</div>
-    </div>
-  </div>
-</form>
+	<form class="form-inline">
+	  <div class="form-group">
+	    <div class="input-group">
+	      <div class="input-group-addon">Qty</div>
+	      <input type="text" class="form-control" ng-change="updateQuantity()" ng-model="quantity" smart-float placeholder="10000"/>
+	      <div class="input-group-addon">Units</div>
+	    </div>
+	  </div>
+	</form>
 </div>
 
 <div class="nextButton">
 	<a ng-href="{{qualityPath}}"><button class="btn btn-primary">Next</button></a>
 </div>
-
 
 </div>
 </body>

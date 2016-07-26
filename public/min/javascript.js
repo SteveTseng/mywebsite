@@ -925,8 +925,8 @@ n&&(l[m.name]=n)}q=l}else q=null;else q=null;q=a=q}q&&(b=t(c,{params:d.extend({}
 
 configFunction.$inject = ['$routeProvider', '$locationProvider'];var app = angular
 	.module("myApp", [
-		"firebase", 
-		"ngRoute", 
+    "firebase",
+    "ngRoute",
 		"Steve.HomeController",
 		"Steve.product_developmentController",
 		"Steve.process_developmentController",
@@ -946,35 +946,40 @@ function configFunction($routeProvider, $locationProvider) {
       templateUrl: './partials/home.html',
       controller: 'HomeController'
     }).when('/product', {
-    	templateUrl: './partials/product_development.html',
+      templateUrl: './partials/product_development.html',
       controller: 'product_developmentController'
     }).when('/process', {
-    	templateUrl: './partials/process_development.html',
+      templateUrl: './partials/process_development.html',
       controller: 'process_developmentController'
     }).when('/quality', {
-    	templateUrl: './partials/quality.html',
+      templateUrl: './partials/quality.html',
       controller: 'qualityController'
     }).when('/market', {
       templateUrl: './partials/market.html',
       controller: 'marketController'
     }).otherwise({
-    	redirectTo: "/"
+      redirectTo: "/"
     });
 }
 
-app.directive('material', function(){
+//material directive is use on the product development html
+//matierial directive and ng-repeat provides a list of materials
+app.directive('material', function() {
 	return {
 		restrict: 'E',
 		template: '<div class="result">{{material.name}} {{material.type}} {{material.cost | currency}} {{material.strength}}</div>'
-	}
+	};
 });
 
+//custom percentage filter is used to display numbers in percentage
 app.filter('percentage', ['$filter', function ($filter) {
   return function (input, decimals) {
     return $filter('number')(input * 100, decimals) + '%';
   };
 }]);
 
+//this is the controller for the costs
+//it pulls information from firebase and factories to continuously update cash flow
 app.controller("monitorCtrl", ['$scope', 'ChoiceFactory', '$interval', 'FinanceFactory', 'ScoreBoardFactory', '$timeout', function($scope, ChoiceFactory, $interval, FinanceFactory, ScoreBoardFactory, $timeout){
   $scope.items = [];
   $interval(function(){
@@ -984,95 +989,111 @@ app.controller("monitorCtrl", ['$scope', 'ChoiceFactory', '$interval', 'FinanceF
       $scope.total += $scope.items[i].amount;
     }
   },1000);
-}])
+}]);
 
-app.controller("scoreboardCtrl", ['$scope', '$timeout', function($scope, $timeout){
+//this is the controller for the scores
+//the controller pulls scores of users and displays it on the page
+//it is automatically updated when new entries are made
+app.controller("scoreboardCtrl", ['$scope', '$timeout', function($scope, $timeout) {
   $scope.firebase = firebase.database().ref('users');
   $scope.temp = {};
   $scope.users = [];
   $scope.displaySnapshot = function(snapshot, prevChildKey) {
     $scope.temp = snapshot.val();
     $scope.users.push($scope.temp);
-  }
-  $scope.firebase.on("child_added", $scope.displaySnapshot)
+  };
+  $scope.firebase.on("child_added", $scope.displaySnapshot);
 }]);
- angular
-  .module('Steve.ChoiceFactory', [])
-  .factory('ChoiceFactory', function() {
-  	var data = {
-      diameter: 0,
-      thickness: 0,
-      cylinderHeight: 0,
-  		choice: '',
-      quantity: 0,
-      soldQuantity: 100,
-      qualityControlImpact: 1
-  	};
-  	return { 
-  		MakeChoice: function(choice, diameter, thickness, cylinderHeight){
-  			data.choice = choice;
-        data.diameter = diameter;
-        data.thickness = thickness;
-        data.cylinderHeight = cylinderHeight;
-  		},
-      QuantityChoice: function(quantity){
-        data.quantity = quantity;
-      },
-      QualityChoice: function(number){
-        data.qualityControlImpact = number;
-      },
-      SellingChoice: function(units){
-        data.soldQuantity = units;
-      },
-  		ReturnChoice: function(){
-  			return data;
-  		}
+/*
+Choice factory stores the choices that the users made throughout the game
+the choices such as specs of the design, quantities manufactured,
+quality control, and quantities are relevant to the following pages.
+This keeps the game running with continuous updates.
+*/
+angular
+.module('Steve.ChoiceFactory', [])
+.factory('ChoiceFactory', function() {
+	var data = {
+    diameter: 0,
+    thickness: 0,
+    cylinderHeight: 0,
+		choice: '',
+    quantity: 0,
+    soldQuantity: 100,
+    qualityControlImpact: 1
+	};
+  return {
+    MakeChoice: function(choice, diameter, thickness, cylinderHeight) {
+      data.choice = choice;
+      data.diameter = diameter;
+      data.thickness = thickness;
+      data.cylinderHeight = cylinderHeight;
+    },
+    QuantityChoice: function(quantity) {
+      data.quantity = quantity;
+    },
+    QualityChoice: function(number) {
+      data.qualityControlImpact = number;
+    },
+    SellingChoice: function(units) {
+      data.soldQuantity = units;
+    },
+    ReturnChoice: function() {
+      return data;
     }
-  });
- angular
-  .module('Steve.FinanceFactory', [])
-  .factory('FinanceFactory', function() {
-  	var account = {
-      cost: [{name:'Investment',amount:50000}],
-      revenue: 0,
-      profit: 0
-  	};
-  	return { 
-  		UpdateCost: function($item){
-        var itemExist = false;
-        for(var i = 0; i < account.cost.length; i++){
-          if(account.cost[i].name == $item.name){
-            account.cost[i].amount = $item.amount;
-            itemExist = true;
-          }
+  };
+});
+/*
+Finance factory is a money account.
+This account keeps track of costs, revenue, and profit.
+*/
+angular
+.module('Steve.FinanceFactory', [])
+.factory('FinanceFactory', function() {
+  var account = {
+    cost: [{name:'Investment', amount:50000}],
+    revenue: 0,
+    profit: 0
+  };
+  return {
+    UpdateCost: function($item) {
+      var itemExist = false;
+      for(var i = 0; i < account.cost.length; i++) {
+        if(account.cost[i].name == $item.name) {
+          account.cost[i].amount = $item.amount;
+          itemExist = true;
         }
-        if(itemExist == false){
-          account.cost.push($item);
-        }
-  		},
-  		UpdateRevenue: function(revenue){
-        account.revenue = revenue;
-  		},
-      ReturnAccountInfo: function(){
-        return account;
       }
-    }
-  });
- angular
-  .module('Steve.ScoreBoardFactory', [])
-  .factory('ScoreBoardFactory', function() {
-  	var users = [
-      {name: 'Steve',score: 50000}
-    ];
-  	return { 
-      addUser: function(userObj){
-        users.push({name:userObj.name, score:userObj.score});
-      },
-      returnUser: function(){
-        return users;
+      if(itemExist === false) {
+        account.cost.push($item);
       }
+    },
+    UpdateRevenue: function(revenue) {
+      account.revenue = revenue;
+    },
+    ReturnAccountInfo: function() {
+      return account;
     }
-  });
+  };
+});
+/*
+Score board factory stores users and score informations
+*/
+angular
+.module('Steve.ScoreBoardFactory', [])
+.factory('ScoreBoardFactory', function() {
+	var users = [
+    {name: 'Steve', score: 50000}
+  ];
+	return {
+    addUser: function(userObj) {
+      users.push({name:userObj.name, score:userObj.score});
+    },
+    returnUser: function() {
+      return users;
+    }
+  };
+});
 angular
   .module('Steve.HomeController', ['ngRoute'])
   .controller('HomeController',['$scope', HomeController]);
@@ -1091,17 +1112,20 @@ function marketController($scope, ChoiceFactory, FinanceFactory, ScoreBoardFacto
 	$scope.conversionRate = 0;
 	$scope.profit = 0;
 
-	$scope.revenueUpdate = function(){
+	//revenue and costs are updated in the finance factory
+	//conversion rate are calculated from arbitrary, but insightful numbers
+	$scope.revenueUpdate = function() {
 		$scope.revenue = $scope.choiceData.soldQuantity * $scope.setPrice;
 		FinanceFactory.UpdateRevenue($scope.revenue);
-		$scope.priceDifference = $scope.setPrice - 15;
-		if($scope.priceDifference >= 0){
-			$scope.priceImpact = (1 - $scope.priceDifference * $scope.priceDifference / 15)*0.4;
+		$scope.priceDifference = $scope.setPrice - 15; //15 is the market price
+		//setPrice will influence the conversion rate of the products sold
+		if($scope.priceDifference >= 0) {
+			$scope.priceImpact = (1 - $scope.priceDifference * $scope.priceDifference / 15) * 0.4;
 			if($scope.priceImpact <= 0){
 				$scope.priceImpact = 0;
 			}
-		} else if($scope.priceDifference < 0){
-			$scope.priceImpact = (1 + $scope.priceDifference * -1 / 15)*0.4;
+		} else if($scope.priceDifference < 0) {
+			$scope.priceImpact = (1 + $scope.priceDifference * -1 / 15) * 0.4;
 			if($scope.priceImpact > 1){
 				$scope.priceImpact = 1;
 			}
@@ -1110,7 +1134,7 @@ function marketController($scope, ChoiceFactory, FinanceFactory, ScoreBoardFacto
 		$scope.prototypeCost = 0;
 		$scope.manufacturingCost = 0;
 
-			if($scope.financeData.cost[1].name == 'prototype'){
+			if($scope.financeData.cost[1].name == 'prototype') {
 				$scope.prototypeCost = $scope.financeData.cost[1].amount;
 			}
 			if($scope.financeData.cost[2].name == 'manufacturing'){
@@ -1120,9 +1144,11 @@ function marketController($scope, ChoiceFactory, FinanceFactory, ScoreBoardFacto
 		$scope.revenue = $scope.choiceData.soldQuantity * $scope.setPrice * $scope.conversionRate;
 		$scope.profit = $scope.revenue + $scope.prototypeCost + $scope.manufacturingCost;
 		FinanceFactory.UpdateCost({name:'revenue', amount:$scope.revenue});
-	}
+	};
 
-	$scope.submitScore = function(){
+	$scope.submitScore = function() {
+		//firebase is access again here, to store new user name and email.
+		//the score is automatically update into the database
 		$scope.firebase = firebase.database().ref();
 		$userRef = $scope.firebase.child('users');
 		$scope.userInfo = {name:$scope.name, email:$scope.email, profit: $scope.profit};
@@ -1137,12 +1163,14 @@ angular
   .controller('process_developmentController',['$scope','ChoiceFactory', '$sce', 'FinanceFactory', process_developmentController]);
 
 function process_developmentController($scope, ChoiceFactory, $sce, FinanceFactory) {
+	//the choice of manufacturing process is saved and retrieved to display video selection
 	$scope.choice = ChoiceFactory.ReturnChoice().choice;
 	$scope.upfrontCost1 = 0;
 	$scope.costPerUnit1 = 0;
 	$scope.upfrontCost2 = 0;
 	$scope.costPerUnit2 = 0;
 	$scope.qualityPath = "index.html#/quality";
+	//manufacturing process info are presented in this array
 	$scope.manufacturingProcesses = [{
 		id: 1,
 		material: 'plastic',
@@ -1176,7 +1204,7 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 	$scope.video = {
 		first: '',
 		second: ''
-	}
+	};
 
 	function plasticVideos(){
 		$scope.video.first = $sce.trustAsResourceUrl($scope.manufacturingProcesses[0].url);
@@ -1206,6 +1234,7 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 	$scope.one = 1;
 	$scope.two = 2;
 	$scope.select = 0;
+	
 	$scope.selectProcess = function(option){
 		if(option == 1){
 			if($scope.choice == 'plastic'){
@@ -1227,100 +1256,116 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 				$scope.selectedUpfrontCost = $scope.manufacturingProcesses[0].upfrontCost;
 			}
 		}
-	}
+	};
+
 	$scope.updateQuantity = function(){
 		$scope.total = $scope.quantity * $scope.select + $scope.selectedUpfrontCost;
 		FinanceFactory.UpdateCost({name:'manufacturing',amount:-1 * $scope.total});
 		ChoiceFactory.QuantityChoice($scope.quantity);
-	}
+	};
 }
 angular
   .module('Steve.product_developmentController', ['ngRoute'])
   .controller('product_developmentController',['$scope','ChoiceFactory', 'FinanceFactory','$sce', '$timeout', product_developmentController]);
 
 function product_developmentController($scope, ChoiceFactory, FinanceFactory, $sce, $timeout) {
-	$scope.placeHolder = 0;
+	$scope.placeHolder = 0; //for initial input
+	//firebase data is saved in the myData variable
 	$scope.fireData = [];
 	$scope.myData = firebase.database().ref();
-	$scope.myData.once('value', function(snapshot){
+	$scope.myData.once('value', function(snapshot) {
+		//there is a list of material that is saved in firebase, it is retrieved from here
 		$scope.materials = snapshot.val().material;
 		$scope.fireLinks = snapshot.val().links;
 	});
-
+	//path to the manufacturing page
 	$scope.manufacturingPath = 'index.html#/process';
-	$scope.resultsActivate = function(){
-		$scope.displayMaterials = $scope.materials;
-	}
-
 	$scope.chosenMaterial = null;
+
+	$scope.resultsActivate = function() {
+		$scope.displayMaterials = $scope.materials;
+	};
+
 	$scope.select = function(materialObject) {
 		$scope.chosenMaterial = materialObject;
-		$scope.choice = $scope.chosenMaterial.name + ' ' + $scope.chosenMaterial.type
-		+ ' $' + $scope.chosenMaterial.cost + ' ' + $scope.chosenMaterial.strength;
+		$scope.choice = $scope.chosenMaterial.name + ' ' + $scope.chosenMaterial.type +
+		' $'+ $scope.chosenMaterial.cost + ' ' + $scope.chosenMaterial.strength;
 		$scope.displayMaterials = [];
 		$scope.setSpecs();
 		$scope.cost();
-	}
+	};
 
 	$scope.displayMaterials = [];
-	$scope.cost = function(){
-		FinanceFactory.UpdateCost({name:'prototype',amount:-1 * $scope.chosenMaterial.cost});
-	}
+	$scope.cost = function() {
+		FinanceFactory.UpdateCost({name:'prototype',amount: -1 * $scope.chosenMaterial.cost});
+	};
 
-	$scope.setSpecs = function(){
+	$scope.setSpecs = function() {
 		ChoiceFactory.MakeChoice($scope.chosenMaterial.type, $scope.diameter, $scope.thickness, $scope.cylinderHeight);
-	}
+	};
 
-	$scope.specsLink = function (){
-		var selectingLink = function(){
-			angular.forEach($scope.fireLinks, function(value,key){
-				var eachObj = value;
+	$scope.specsLink = function () {
+
+		var selectingLink = function() {
+			//firelinks is a json object that is stored in firebase
+			//the saved urls is used to retrieve pre-stored 3D Models from eDrawing
+			//iframe will display the approximate model of the entered specs
+			angular.forEach($scope.fireLinks, function(value, key) {
+				//this forEach loop will search through the firelinks to find a model to specs match
+				var eachObj = value; //the value is an object of the specs of the model
+				//temp obj stores the specs entered by the user
 				var tempObj = {
 					diameter: $scope.diameter,
 					thickness: $scope.thickness,
 					cylinderHeight: $scope.cylinderHeight
-				}
+				};
 
+				//if user entered specs, this will activate
 				if($scope.diameter && $scope.thickness && $scope.cylinderHeight){
+				//there are total of 27 models available.
+				//Users may enter specs that are in between the specs of two consecutive models,
+				//rounding up or down to the nearest model specs will enable a possible match.
 					specsRounding(tempObj);
 				}
-
-
+				//the user input and pre-saved models specs are matched here
 				if(eachObj.diameter == tempObj.diameter && eachObj.thickness == tempObj.thickness && eachObj.height == tempObj.cylinderHeight){
-					$scope.link = $sce.trustAsResourceUrl("https://www.3dcontentcentral.com/external-site-embed.aspx?format=3D&catalogid=171&modelid=" + eachObj.url + "&width=250&height=250&edraw=true")
+					//when there is a match, the stored url will be entered into provided plugin by 3D Content Central.
+					//the iframe will display the 3D model of the user input
+					$scope.link = $sce.trustAsResourceUrl("https://www.3dcontentcentral.com/external-site-embed.aspx?format=3D&catalogid=171&modelid=" + eachObj.url + "&width=250&height=250&edraw=true");
 				}
-			}) 
-		}
-		specsRounding = function(tempObj){
-			if($scope.diameter <= 6){
+			});
+		};
+
+		//this is the rounding function that takes user input and round up or down to the nearest model size
+		specsRounding = function(tempObj) {
+			if($scope.diameter <= 6) {
 				tempObj.diameter = 6;
-			} else if ($scope.diameter >= 18){
+			} else if ($scope.diameter >= 18) {
 				tempObj.diameter = 18;
 			} else {
 				tempObj.diameter = 12;
 			}
 
-			if($scope.thickness <= 0.02){
+			if($scope.thickness <= 0.02) {
 				tempObj.thickness = 0.02;
-			} else if ($scope.thickness >= 0.2){
+			} else if ($scope.thickness >= 0.2) {
 				tempObj.thickness = 0.2;
 			} else {
 				tempObj.thickness = 0.0925;
 			}
 
-			if($scope.cylinderHeight <= 12){
+			if($scope.cylinderHeight <= 12) {
 				tempObj.cylinderHeight = 12;
-			} else if ($scope.cylinderHeight >= 24){
+			} else if ($scope.cylinderHeight >= 24) {
 				tempObj.cylinderHeight = 24;
 			} else {
 				tempObj.cylinderHeight = 18;
 			}
 
 			return tempObj;
-		}
+		};
 		$timeout(selectingLink, 1000);
-	}
-
+	};
 }
 angular
 	.module('Steve.qualityController', ['ngRoute'])
@@ -1331,6 +1376,10 @@ function qualityController($scope, ChoiceFactory){
 	$scope.quantity = $scope.dataObj.quantity;
 	$scope.scrapRate = 0;
 	$scope.marketPath = 'index.html#/market';
+	$scope.tolerance = 'Not Yet Chosen';
+	$scope.manufacturingAnalysis = 'TBD';
+
+	//levels of quality control set in this array
 	$scope.qualityControlLevels = [{
 		id:1,
 		level:'strict'
@@ -1341,12 +1390,11 @@ function qualityController($scope, ChoiceFactory){
 		id:3,
 		level:'loose'
 	}];
-	$scope.tolerance = 'Not Yet Chosen';
-	$scope.manufacturingAnalysis = 'TBD';
 
+	//wall thickness will determine the scrap rate
 	if($scope.dataObj.choice == 'plastic'){
 		if($scope.dataObj.thickness >= 0.045 && $scope.dataObj.thickness <= 0.140){
-			$scope.manufacturingAnalysis = 'dimension pass';
+			$scope.manufacturingAnalysis = 'good quality!';
 			$scope.scrapRate += 0.05;
 		}else if($scope.dataObj.thickness < 0.045){
 			$scope.manufacturingAnalysis = 'too thin';
@@ -1357,17 +1405,33 @@ function qualityController($scope, ChoiceFactory){
 		}
 	}
 
+	if($scope.dataObj.choice == 'metal'){
+		if($scope.dataObj.thickness >= 0.03125 && $scope.dataObj.thickness <= 0.25){
+			$scope.manufacturingAnalysis = 'good quality!';
+			$scope.scrapRate += 0.05;
+		}else if($scope.dataObj.thickness < 0.03125){
+			$scope.manufacturingAnalysis = 'deformed wall';
+			$scope.scrapRate += 0.70;
+		}else if($scope.dataObj.thickness > 0.25){
+			$scope.manufacturingAnalysis = 'uneven walls';
+			$scope.scrapRate += 0.60;
+		}
+	}
+
 	$scope.temp = $scope.scrapRate;
 	$scope.trashUnits = 0;
 	$scope.acceptedUnits = 0;
+	//this function determines each level's consequences
 	$scope.toleranceFunction = function() {
-		if($scope.tolerance.level == 'strict'){
+		if($scope.tolerance.level == 'strict') {
+			//the scrap rate is amplified by the consequence of quality control level
 			$scope.temp = $scope.scrapRate * 1.4;
+			//choice is saved in the choice factory for later use
 			ChoiceFactory.QualityChoice(1);
-		}else if($scope.tolerance.level == 'tight'){
+		}else if($scope.tolerance.level == 'tight') {
 			$scope.temp = $scope.scrapRate * 1.15;
 			ChoiceFactory.QualityChoice(0.95);
-		}else if($scope.tolerance.level == 'loose'){
+		}else if($scope.tolerance.level == 'loose') {
 			$scope.temp = $scope.scrapRate * 1.05;
 			ChoiceFactory.QualityChoice(0.9);
 		}
@@ -1376,47 +1440,50 @@ function qualityController($scope, ChoiceFactory){
 		}
 		$scope.trashUnits = $scope.temp * $scope.quantity;
 		$scope.acceptedUnits = $scope.quantity - $scope.trashUnits;
-	}
-
-	$scope.sellingFunction = function(){
+	};
+	//selling function stores the accepted units in the choice factory
+	$scope.sellingFunction = function() {
 		ChoiceFactory.SellingChoice($scope.acceptedUnits);
-	}
+	};
 }
+//this is a jQuery page that adds links, logos, and icons to the page dynamically
 $(document).ready( function() {
-		$( ".header" )
-		  .mouseenter(function() {
-		  	$( "#1" ).append('<a href="https://www.facebook.com/stevetseng17"><img class="menu_items" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" height="40" width="40"></a>')
-		  	$( "#2" ).append('<a href="https://github.com/SteveTseng"><img class="menu_items" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="40" width="40"></a>')
-		  	$( "#3" ).append('<a href="https://www.linkedin.com/in/steve-tseng-b5234237"><img class="menu_items" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" height="40" width="40"></a>')
-		  	$( "#4" ).append('<h4 class="menu_items">Biography</h4>')
-		  	$( "#5" ).append('<h4 class="menu_items">Engineering</h4>')
-		  	$( "#6" ).append('<h4 class="menu_items">Contact</h4>')
-		  })
-		  .mouseleave(function(){
-		  	$(".header").find('.menu_items').remove()
-		  });
+	//links show when the mouse hovers to the header area
+	$( ".header" )
+	.mouseenter(function() {
+		$( "#1" ).append('<a href="https://www.facebook.com/stevetseng17"><img class="menu_items" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" height="40" width="40"></a>');
+		$( "#2" ).append('<a href="https://github.com/SteveTseng"><img class="menu_items" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="40" width="40"></a>');
+		$( "#3" ).append('<a href="https://www.linkedin.com/in/steve-tseng-b5234237"><img class="menu_items" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" height="40" width="40"></a>');
+		$( "#4" ).append('<h4 class="menu_items">Biography</h4>');
+		$( "#5" ).append('<h4 class="menu_items">Engineering</h4>');
+		$( "#6" ).append('<h4 class="menu_items">Contact</h4>');
+	})
+	.mouseleave(function(){
+		$(".header").find('.menu_items').remove();
+	});
 
-		var visible = false;
-		var htmlCssJs = false;
+	//logos of html,css,js and angular shows when the page is scrolled
+	var visible = false;
+	var htmlCssJs = false;
 
-	  	$(window).on('scroll',function() {
-		    var scrolltop = $(this).scrollTop();
-		    if(scrolltop >= 5) {
-		    	if(!htmlCssJs){
-		      	$('.nav').find('.navy').append('<li><img src="./src/html.png" height="75" width="75"></li>');
-		      	$('.nav').find('.navy').append('<li><img src="./src/css3.svg" height="75" width="75"></li>');
-		      	$('.nav').find('.navy').append('<li><img src="./src/javascript.png" height="75" width="55"></li>');
-		    		htmlCssJs = true;
-		      }
-		    }
-		    if(scrolltop > 500 && !visible){
-		    	visible = true;
-		    	$('.nav').find('.navy').append("<li><img id='angular' height='70' width='70' src='./src/angular.png'></li>")
-		    } else if (scrolltop < 500){
-		    	visible = false;
-		    	$('#angular').remove();
-		    }
-	  	})
+	$(window).on('scroll', function() {
+		var scrolltop = $(this).scrollTop();
+		if(scrolltop >= 5) {
+			if(!htmlCssJs){
+			$('.nav').find('.navy').append('<li><img src="./src/html.png" height="75" width="75"></li>');
+			$('.nav').find('.navy').append('<li><img src="./src/css3.svg" height="75" width="75"></li>');
+			$('.nav').find('.navy').append('<li><img src="./src/javascript.png" height="75" width="55"></li>');
+			htmlCssJs = true;
+		}
+		}
+		if(scrolltop > 500 && !visible){
+			visible = true;
+			$('.nav').find('.navy').append("<li><img id='angular' height='70' width='70' src='./src/angular.png'></li>");
+		} else if (scrolltop < 500){
+			visible = false;
+			$('#angular').remove();
+		}
+	});
 });
 
 

@@ -1,5 +1,5 @@
 .header {
-	color:black;
+	color: black;
 	overflow: hidden;
 	margin: 0 auto;
 }
@@ -10,11 +10,11 @@
 
 
 .col-md-6 {
-	padding:5px;
+	padding: 5px;
 }
 
 div {
-	padding:5px;
+	padding: 5px;
 }
 
 #name {
@@ -22,13 +22,12 @@ div {
 }
 
 #menu {
-	padding:10px;
+	padding: 10px;
 }
 
 .menu_items {
 	vertical-align: center;
 }
-
 
 .nav { 
   display: inline;
@@ -39,11 +38,11 @@ div {
 }
 
 li {
-	display:block;
+	display: block;
 }
 
 ul li {
-	display:inline;
+	display: inline;
 }
  
 ul {
@@ -52,7 +51,7 @@ ul {
 
 .angular {
 	background-color: #353334;
-	height:1200px;
+	height: 1200px;
 }
 
 .wrap {
@@ -60,33 +59,33 @@ ul {
 }
 
 .app {
-	height:600px;
-	border:solid;
-	border-color:#B3B2B3;
+	height: 600px;
+	border: solid;
+	border-color: #B3B2B3;
 	border-radius: 5px;
 	display: block;
 	background-color: #F51C49;
-	color:#CDE5DE;
+	color: #CDE5DE;
 }
 
 .monitor {
 	text-align: left;
-	height:400px;
+	height: 400px;
 	background-color: #F51C49;
 	display: block;
-	border:solid;
-	border-color:#B3B2B3;
+	border: solid;
+	border-color: #B3B2B3;
 	border-radius: 2px;
-	color:#CDE5DE;
+	color: #CDE5DE;
 }
 
 .special {
-	font-size:100px;
+	font-size: 100px;
 }
 
 .home_page {
-	position:relative;
-	top:150px;
+	position: relative;
+	top: 150px;
 }
 
 
@@ -95,8 +94,8 @@ ul {
 }
 
 .result {
-	background-color:white;
-	color:black;
+	background-color: white;
+	color: black;
 	height: auto;
     max-height: 200px;
 }
@@ -109,9 +108,9 @@ ul {
 	background-color: #F51C49;
 	display: block;
 	text-align: center;
-	color:#CDE5DE;
-	border:solid;
-	border-color:#B3B2B3;
+	color: #CDE5DE;
+	border: solid;
+	border-color: #B3B2B3;
 	border-radius: 2px;
 }
 

@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "angularfire": "^2.0.1",
+    "eslint": "^2.0.0-rc.1",
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.1",

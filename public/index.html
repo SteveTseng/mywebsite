@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
   <link rel="stylesheet" type="text/css" href="./min/finalstyle.css">
   <script src="./min/javascript.js"></script>
-
+  <script>
+      var config = {
+        apiKey: "AIzaSyAn7zpk17ffO6tVIyamIqXAXkN-8k2d-As",
+        authDomain: "steve-tseng-portfolio.firebaseapp.com",
+        databaseURL: "https://steve-tseng-portfolio.firebaseio.com",
+        storageBucket: "steve-tseng-portfolio.appspot.com",
+      };
+      firebase.initializeApp(config);
+  </script>
+  <title>Steve's Web Resume</title>
 <body>
 
 <div class="header" > 
@@ -21,95 +30,93 @@
 	<div class="col-md-1"></div>
 </div>
 
-  <hr class="styledline"></hr>
+<hr class="styledline"/>
 
-  <div class="container">
-    <div class="nav">
-      <ul class="navy"></ul>
-    </div>
+<div class="container">
+  <div class="nav">
+    <ul class="navy"></ul>
+  </div>
+  <div>
+  	<h3>Summary</h3>
+  	<p>Motivated and Fresh Web Developer with engineering background and engineering experience. Results and details oriented, with emphasis on efficiency and effectiveness. Strong technical skills and capable communicator. Entrepenurial in spirit and Dedicated to team and team effort.</p>
+  </div>
+  <div>
+  	<h3>Skills</h3>
+		<ul>
+			<div class="row">
+				<div class="col-md-6">
+					<p>Proficient</p>
+					<li>HTML</li>
+					<li>CSS Bootstrap</li>
+					<li>Javascript</li>
+					<li>jQuery</li>
+					<li>AJAX</li>
+				</div>
+				<div class="col-md-6">
+					<p>Exposed</p>
+					<li>Angular.js</li>
+					<li>React.js</li>
+					<li>Node.js</li>
+					<li>MongoDB.js</li>
+					<li>PostgreSQL</li>
+				</div>
+		  </div>
+		</ul>
+  </div>
+	<div>
+    <h3>Experience</h3>
     <div>
-    	<h3>Summary</h3>
-    	<p>Motivated and Fresh Web Developer with engineering background and engineering experience. Results and details oriented, with emphasis on efficiency and effectiveness. Strong technical skills and capable communicator. Entrepenurial in spirit and Dedicated to team and team effort.</p>
-    </div>
-    <div>
-    	<h3>Skills</h3>
-    		<ul>
-    			<div class="row">
-  					<div class="col-md-6">
-  						<p>Proficient</p>
-  						<li>HTML</li>
-  						<li>CSS Bootstrap</li>
-  						<li>Javascript</li>
-  						<li>jQuery</li>
-  						<li>AJAX</li>
-  					</div>
-  					<div class="col-md-6">
-  						<p>Exposed</p>
-  						<li>Angular.js</li>
-  						<li>React.js</li>
-  						<li>Node.js</li>
-  						<li>MongoDB.js</li>
-  						<li>PostgreSQL</li>
-  					</div>
-				  </div>
-    		</ul>
-    	</div>
-    	<div>
-        <h3>Experience</h3>
-        <div>
-    		  <h4><strong>Snapwize, LLC</strong> - Web Developer</h4>
-    		  <h6>November 2015 to February 2016</h6>
-    			<ul>
-    				<li>Developed wiring diagrams for customers</li>
-    				<li>Design web layouts and UI</li>
-    				<li>Setup Wordpress websites and plugins</li>
-    				<li>Performed periodic maintenance and basic SEO</li>
-    			</ul>
-    		</div>
-    	</div>
-    	<div>
-    		<h4><strong>Applied Medical</strong> - Medical Device Manufacturing Engineering</h4>
-    		<h6>June 2013 to February 2015</h6>
-    		<ul>
-      		<li>Filed 2 patent designs in the field of surgical simulation</li>
-  				<li>Innovated solutions and process for difficult to assemble components</li>
-  				<li>Designed fixtures and tools for cleanroom assembly line</li>
-  				<li>Drafted and documented mechanical part drawings & assembly models into SAP system and SolidWorks PDM</li>
-  				<li>Written and revised test protocols, test reports, and manufacturing instructions for processes</li>
-  				<li>Interacted and worked with cross functional areas of the business</li>
-  				<li>Conducted time studies and costs analysis for new and established processes</li>
-  				<li>Accelerated the production speed of silicone components manufacturing process by 75%</li>
-  				<li>Developed and implemented rework process for a product line</li>
-  				<li>Conducted process verification and validation IQ, OQ, & PQ to qualify a machine for production line</li>
-  				<li>Issued, investigated, and responded to Manufacturing Readiness Reviews (MRR)</li>
-        </ul>
-    	</div>
-    	<h3>Education</h3>
-    	<div>
-    		<h4>California State Polytechnic University</h4>
-    		<h5>Bachelor's Degree, Mechanical Engineering</h5>
-    		<h6>Graduated 2013</h6>
-      </div>
-    </div>
+		  <h4><strong>Snapwize, LLC</strong> - Web Developer</h4>
+		  <h6>November 2015 to February 2016</h6>
+			<ul>
+				<li>Developed wiring diagrams for customers</li>
+				<li>Design web layouts and UI</li>
+				<li>Setup Wordpress websites and plugins</li>
+				<li>Performed periodic maintenance and basic SEO</li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<h4><strong>Applied Medical</strong> - Medical Device Manufacturing Engineering</h4>
+		<h6>June 2013 to February 2015</h6>
+		<ul>
+  		<li>Filed 2 patent designs in the field of surgical simulation</li>
+			<li>Innovated solutions and process for difficult to assemble components</li>
+			<li>Designed fixtures and tools for cleanroom assembly line</li>
+			<li>Drafted and documented mechanical part drawings & assembly models into SAP system and SolidWorks PDM</li>
+			<li>Written and revised test protocols, test reports, and manufacturing instructions for processes</li>
+			<li>Interacted and worked with cross functional areas of the business</li>
+			<li>Conducted time studies and costs analysis for new and established processes</li>
+			<li>Accelerated the production speed of silicone components manufacturing process by 75%</li>
+			<li>Developed and implemented rework process for a product line</li>
+			<li>Conducted process verification and validation IQ, OQ, & PQ to qualify a machine for production line</li>
+			<li>Issued, investigated, and responded to Manufacturing Readiness Reviews (MRR)</li>
+    </ul>
+	</div>
+  <h3>Education</h3>
+	<div>
+		<h4>California State Polytechnic University</h4>
+		<h5>Bachelor's Degree, Mechanical Engineering</h5>
+		<h6>Graduated 2013</h6>
   </div>
 </div>
 
-
-
+<!--Angular App 'Launch your Product' Game-->
 <div class="angular" ng-app="myApp">
   <div class="wrap">
     <div class="row">
       <div class="col-md-2">
+        <!--scoreboard of the game, on the left side of the app-->
         <div class="scoreboard" ng-controller="scoreboardCtrl">
           <h3>High Scores</h3>
           <h4><div class="scoreboard" ng-repeat="user in users | orderBy:'-profit'">{{user.name}} ${{user.profit | number: 0}}</div></h4>
         </div>
       </div>
-
+      <!--main view of the app-->
       <div class="col-md-8">
-        <div class="app" ng-view></div>
+      <div class="app" ng-view></div>
       </div>
-
+      <!--the money monitor is located on the right of the app, keeps track of the costs-->
       <div class="col-md-2">
         <div class="monitor" ng-controller="monitorCtrl">
           <h3>
@@ -118,11 +125,8 @@
           </h3>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
-
-  </body>
+</body>
 </html>

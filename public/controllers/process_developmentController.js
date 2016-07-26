@@ -3,12 +3,14 @@ angular
   .controller('process_developmentController',['$scope','ChoiceFactory', '$sce', 'FinanceFactory', process_developmentController]);
 
 function process_developmentController($scope, ChoiceFactory, $sce, FinanceFactory) {
+	//the choice of manufacturing process is saved and retrieved to display video selection
 	$scope.choice = ChoiceFactory.ReturnChoice().choice;
 	$scope.upfrontCost1 = 0;
 	$scope.costPerUnit1 = 0;
 	$scope.upfrontCost2 = 0;
 	$scope.costPerUnit2 = 0;
 	$scope.qualityPath = "index.html#/quality";
+	//manufacturing process info are presented in this array
 	$scope.manufacturingProcesses = [{
 		id: 1,
 		material: 'plastic',
@@ -42,7 +44,7 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 	$scope.video = {
 		first: '',
 		second: ''
-	}
+	};
 
 	function plasticVideos(){
 		$scope.video.first = $sce.trustAsResourceUrl($scope.manufacturingProcesses[0].url);
@@ -72,6 +74,7 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 	$scope.one = 1;
 	$scope.two = 2;
 	$scope.select = 0;
+	
 	$scope.selectProcess = function(option){
 		if(option == 1){
 			if($scope.choice == 'plastic'){
@@ -93,10 +96,11 @@ function process_developmentController($scope, ChoiceFactory, $sce, FinanceFacto
 				$scope.selectedUpfrontCost = $scope.manufacturingProcesses[0].upfrontCost;
 			}
 		}
-	}
+	};
+
 	$scope.updateQuantity = function(){
 		$scope.total = $scope.quantity * $scope.select + $scope.selectedUpfrontCost;
 		FinanceFactory.UpdateCost({name:'manufacturing',amount:-1 * $scope.total});
 		ChoiceFactory.QuantityChoice($scope.quantity);
-	}
+	};
 }
