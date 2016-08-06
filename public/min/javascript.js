@@ -1003,6 +1003,7 @@ app.controller("scoreboardCtrl", ['$scope', '$timeout', function($scope, $timeou
     $scope.users.push($scope.temp);
   };
   $scope.firebase.on("child_added", $scope.displaySnapshot);
+  $scope.firebase.off("child_added", $scope.displaySnapshot);
 }]);
 /*
 Choice factory stores the choices that the users made throughout the game
@@ -1446,6 +1447,15 @@ function qualityController($scope, ChoiceFactory){
 		ChoiceFactory.SellingChoice($scope.acceptedUnits);
 	};
 }
+var config = {
+	apiKey: "AIzaSyAn7zpk17ffO6tVIyamIqXAXkN-8k2d-As",
+	authDomain: "steve-tseng-portfolio.firebaseapp.com",
+	databaseURL: "https://steve-tseng-portfolio.firebaseio.com",
+	storageBucket: "steve-tseng-portfolio.appspot.com",
+	};
+firebase.initializeApp(config);
+
+
 //this is a jQuery page that adds links, logos, and icons to the page dynamically
 $(document).ready( function() {
 	//links show when the mouse hovers to the header area

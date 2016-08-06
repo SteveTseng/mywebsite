@@ -78,4 +78,5 @@ app.controller("scoreboardCtrl", function($scope, $timeout) {
     $scope.users.push($scope.temp);
   };
   $scope.firebase.on("child_added", $scope.displaySnapshot);
+  $scope.firebase.off("child_added", $scope.displaySnapshot);
 });
