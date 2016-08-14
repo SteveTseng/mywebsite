@@ -1,0 +1,58 @@
+.carousel {
+	background-color: #6BBBF4;
+	height:65%;
+	width:100%;
+}
+
+.intro {
+	position:relative;
+	left:15%;
+	top:25%;
+	text-align: left;
+	color:white;
+	font-size: 80;
+	width:50%;
+}
+
+.skills p {
+	font-size:100;
+}
+
+.skills {
+	color: #3C81D1;
+	height:85%;
+	width:100%;
+}
+
+.skills .container {
+	position:relative;
+	top:20%;
+}
+
+.skills li {
+	font-size: 40;
+	list-style: none;
+	color: #3C81D1;
+}
+
+.portfolio {
+	position: relative;
+	background-color: #7BC9C9;
+	height:85%;
+	width:100%;
+}
+
+.portfoliotitle {
+	text-align: center;
+	position:relative;
+	font-size: 100;
+	color:white;
+	top:10%;
+}
+
+.portfolio .container {
+	position:relative;
+	top:20%;
+	text-align: center;
+}
+
