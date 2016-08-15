@@ -1,13 +1,11 @@
 <html>
 <head>
 	<title></title>
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="jquery-2.2.3.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="animate.css">
+	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="./bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -49,37 +47,41 @@
 </nav>
 
 <div class="carousel">
-	<div class="intro">
-		<p class="jobtitle">Full Stack</p>
-		<p class="jobtitle">Web Developer</p>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1">
+				<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+			</div>
+			<div class="col-md-5">
+				<div class="intro animated bounceInDown">
+					<p class="jobtitle">Full Stack</p>
+					<p class="jobtitle">Web Developer</p>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="picture animated bounceInDown">
+					<img src="steve.jpg">
+				</div>
+			</div>
+
+			<div class="col-md-1">
+				<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+			</div>
+		</div>
 	</div>
 </div>
 
 <div class="skills">
+	<p>Skills</p>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<p>Skills</p>
-			</div>
-  		<div class="col-md-3">
-  			<li>HTML</li>
-				<li>CSS</li>
-				<li>Javascript</li>
-				<li>jQuery</li>
-				<li>AJAX</li>
-				<li>Angular.js</li>
-				<li>React.js</li>
-  		</div>
-  		<div class="col-md-3">
-  			<li>Node.js</li>
-				<li>MongoDB</li>
-				<li>MySQL</li>
-				<li>PostgresSQL</li>
-				<li>Php</li>
-				<li>Linux</li>
-				<li>Apache</li>
-  		</div>
+
+
+		<div class="show">
+			<button type="button" class="btn btn-primary btn-lg">Start</button>
 		</div>
+
+			<div class="row"></div> 
+
 	</div>
 </div>
 
@@ -90,18 +92,39 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<img src="https://angular.io/resources/images/logos/angular2/angular.png">
+				<img src="angular.png">
 			</div>
 			<div class="col-md-4">
-				<img src="https://angular.io/resources/images/logos/angular2/angular.png">
+				<img src="angular.png">
 			</div>
 			<div class="col-md-4">
-				<img src="https://angular.io/resources/images/logos/angular2/angular.png">
+				<img src="angular.png">
 			</div>
 		</div>
 	</div>
 </div>
 	
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<p>&copy; 2016 STEVE TSENG</p>
+			</div>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-1">
+				<p>Portfolio</p>
+			</div>
+			<div class="col-md-2">
+				<p>About</p>
+			</div>
+			<div class="col-md-1">
+				<p>Contact</p>
+			</div>
+		</div>
+	</div>
+</div>
+
 	<script type="text/javascript" src="javascript.js"></script>
 </body>
 </html>

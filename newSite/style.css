@@ -1,21 +1,42 @@
 .carousel {
+	position: relative;
 	background-color: #6BBBF4;
 	height:65%;
 	width:100%;
 }
 
-.intro {
-	position:relative;
-	left:15%;
+.carousel .container {
+	width:100%;
+	position: relative;
 	top:25%;
-	text-align: left;
+}
+
+
+.carousel .col-md-1 {
+	position:relative;
+	color:white;
+	text-align: center;
+	font-size: 35;
+	top:100px;
+}
+
+.carousel .col-md-5 {
+	position:relative;
+	text-align: center;
 	color:white;
 	font-size: 80;
-	width:50%;
+}
+
+.carousel .col-md-5 img {
+	height:300px;
+	width:300px;
 }
 
 .skills p {
+	position: relative;
 	font-size:100;
+	text-align: center;
+	top:150px;
 }
 
 .skills {
@@ -27,6 +48,7 @@
 .skills .container {
 	position:relative;
 	top:20%;
+	text-align: center;
 }
 
 .skills li {
@@ -56,3 +78,25 @@
 	text-align: center;
 }
 
+.footer {
+	position: relative;
+	background-color: black;
+	height:5%;
+	width:100%;
+	text-align: center;
+}
+
+.footer p {
+	position:relative;
+	color:white;
+	top:15px;
+}
+
+.footer .col-md-1 {
+	text-align: center;
+}
+
+.skills img {
+	position:relative;
+	top:50px;
+}
