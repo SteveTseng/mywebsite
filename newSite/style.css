@@ -49,13 +49,45 @@
 	position:relative;
 	top:20%;
 	text-align: center;
+	width:85%;
+}
+
+
+
+.skills .container .col-md-4 {
+	position:relative;
+	left:5%;
 }
 
 .skills li {
-	font-size: 40;
+	position: relative;
+	font-size: 20;
 	list-style: none;
 	color: #3C81D1;
 }
+
+.skills .container .col-md-4 div {
+	width:200px;
+	height:200px;
+	border-radius:100px;
+	font-size:30px;
+	color: white;
+	line-height:200px;
+	text-align:center;
+	background:#3C81D1;
+}
+
+.skills .container .btn.btn-primary {
+	position: relative;
+	left:45%;
+}
+
+.skills .container .btn.btn-danger {
+	position: relative;
+	top:50px;
+
+}
+
 
 .portfolio {
 	position: relative;
@@ -89,7 +121,7 @@
 .footer p {
 	position:relative;
 	color:white;
-	top:15px;
+	top:10px;
 }
 
 .footer .col-md-1 {
