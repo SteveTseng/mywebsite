@@ -89,6 +89,7 @@
 }
 
 
+
 .portfolio {
 	position: relative;
 	background-color: #7BC9C9;
@@ -108,6 +109,11 @@
 	position:relative;
 	top:20%;
 	text-align: center;
+}
+
+.portfolio .container img {
+	height:30%;
+	width:80%;
 }
 
 .footer {

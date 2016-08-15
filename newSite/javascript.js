@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 		//setInterval(function(){
 			$('.show').addClass('animated bounce').css({
-				'-webkit-animation-duration': '1.5s',
+				'-webkit-animation-duration': '1.75s',
 				'-webkit-animation-delay': '1s',
 				'-webkit-animation-iteration-count': 'infinite'
 			});
